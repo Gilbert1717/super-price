@@ -5,10 +5,10 @@
 
 # Group Information
 
-## Group-PX-XX
+## Group-P7-06
 
 ## Members
-* Student Name 1 (sXXXXX)
+* Edward (Ned) Pearson (s3844470)
 * Student Name 2 (sXXXXX)
 * Student Name 3 (sXXXXX)
 * Student Name 4 (sXXXXX)
