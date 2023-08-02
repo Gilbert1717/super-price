@@ -9,7 +9,7 @@
 
 ## Members
 * Edward (Ned) Pearson (s3844470)
-* Student Name 2 (sXXXXX)
+* Rita Lam Cordeiro (s3947881)
 * Student Name 3 (sXXXXX)
 * Student Name 4 (sXXXXX)
 
