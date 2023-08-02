@@ -5,11 +5,11 @@
 
 # Group Information
 
-## Group-PX-XX
+## Group-P7-06
 
 ## Members
-* Student Name 1 (sXXXXX)
-* Student Name 2 (sXXXXX)
+* Edward (Ned) Pearson (s3844470)
+* Rita Lam Cordeiro (s3947881)
 * Student Name 3 (sXXXXX)
 * Student Name 4 (sXXXXX)
 * Yiqi Du 5 (s3665887)
