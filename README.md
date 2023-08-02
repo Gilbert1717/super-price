@@ -12,10 +12,11 @@
 * Student Name 2 (sXXXXX)
 * Student Name 3 (sXXXXX)
 * Student Name 4 (sXXXXX)
+* Yiqi Du 5 (s3665887)
 
 ## Records
 
-* Github repository: https://github.com/xxx
+* Github repository: https://github.com/cosc2299-sept-2023/team-project-group-p07-06.git
 * Github Project Board : https://xxxx
 
 	
