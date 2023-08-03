@@ -10,7 +10,7 @@
 ## Members
 * Edward (Ned) Pearson (s3844470)
 * Rita Lam Cordeiro (s3947881)
-* Student Name 3 (sXXXXX)
+* Yash Dhukate (s3898134)
 * Student Name 4 (sXXXXX)
 * Yiqi Du 5 (s3665887)
 
