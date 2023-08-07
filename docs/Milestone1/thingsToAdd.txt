@@ -1,0 +1,16 @@
+1. Team name and names of members
+2. Contribution Statement, with details for each team member
+    1. % of contribution (total should add to 100%)
+    2. a LIST of items contributed (e.g., Wireframe, User Story numbers 1.4 and 1.5; Acceptance Criteria 4.1-4.5; 5.1-5.4; product backlog grooming)
+3. Links to Github repo and Issue tracker board and to Communication tool (e.g., Teams).
+4. Minutes of all meetings, including Sprint Planning and Retro, plus logs of other communications --- remember that Module 2 contains suggested templates for minutes for all meeting types
+5. An SRS document containing at least the following
+    1. Wireframes
+    2. Architecture (High level structure such as Rest Api or Microservices Design)
+    3. User Stories
+    4. Tests and Acceptance Criteria
+    5. Product Backlog
+    6. Sprint 1 and 2 (estimated) backlog
+    7. Sprint 1 and 2 (estimated) Planning note
+    8. Sprint 0 Retro
+6. Each team member record up to 2 minutes video, explain your work and contribution, and quickly show it. Add all videos to a folder called videos and zip the folder.

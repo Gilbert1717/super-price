@@ -11,8 +11,9 @@
 * Edward (Ned) Pearson (s3844470)
 * Rita Lam Cordeiro (s3947881)
 * Yash Dhukate (s3898134)
-* Student Name 4 (sXXXXX)
-* Yiqi Du 5 (s3665887)
+* James Czeredys (s3900781)
+* Yiqi Du (s3665887)
+* Raphael Bullen (s3897844)
 
 ## Records
 
@@ -54,7 +55,3 @@ Other tools will be required to complete the project (e.g., Docker)
 - cd into frontend/
 - Install dependencies "npm install"
 - Run the app with "npm run dev"
-
-
-
-
