@@ -1,4 +1,4 @@
-package au.edu.rmit.sept.cinemas.movies;
+package superPrice;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
 
@@ -7,10 +7,10 @@ import javax.sql.DataSource;
 public class RepositoryImpl {
     public DataSource getDataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
-        dataSourceBuilder.url("jdbc:mysql://localhost:3306/superprice?");
-        dataSourceBuilder.username("root");
-        dataSourceBuilder.password("12345678");
+        dataSourceBuilder.driverClassName("org.h2.Driver");
+        dataSourceBuilder.url("jdbc:h2:file:/tmp/demodb");
+        dataSourceBuilder.username("sa");
+        dataSourceBuilder.password("password");
         return dataSourceBuilder.build();
     }
 }

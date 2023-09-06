@@ -1,8 +1,5 @@
-package au.edu.rmit.sept.cinemas.movies.storePrice.price;
+package superPrice.storePrice.price;
 
-
-import au.edu.rmit.sept.cinemas.movies.storePrice.StorePrice;
-import au.edu.rmit.sept.cinemas.movies.storePrice.product.Product;
 
 import java.util.Collection;
 

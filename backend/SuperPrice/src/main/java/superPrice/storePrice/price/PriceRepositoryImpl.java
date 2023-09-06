@@ -1,13 +1,6 @@
-package au.edu.rmit.sept.cinemas.movies.storePrice.price;
+package superPrice.storePrice.price;
 
-import au.edu.rmit.sept.cinemas.movies.RepositoryImpl;
-import au.edu.rmit.sept.cinemas.movies.storePrice.StorePrice;
-import au.edu.rmit.sept.cinemas.movies.storePrice.product.Product;
-import au.edu.rmit.sept.cinemas.movies.storePrice.product.ProductRepository;
-import au.edu.rmit.sept.cinemas.movies.storePrice.product.ProductRepositoryImpl;
-import au.edu.rmit.sept.cinemas.movies.storePrice.store.Store;
-import au.edu.rmit.sept.cinemas.movies.storePrice.store.StoreRepository;
-import au.edu.rmit.sept.cinemas.movies.storePrice.store.StoreRepositoryImpl;
+import superPrice.RepositoryImpl;
 import org.springframework.jdbc.datasource.init.UncategorizedScriptException;
 import org.springframework.stereotype.Repository;
 

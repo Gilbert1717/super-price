@@ -1,4 +1,4 @@
-package au.edu.rmit.sept.cinemas.movies.storePrice.product;
+package superPrice.storePrice.product;
 
 
 //import au.edu.rmit.sept.cinemas.movies.price.StorePrice;

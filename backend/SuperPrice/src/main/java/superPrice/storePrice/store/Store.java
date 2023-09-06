@@ -1,4 +1,4 @@
-package au.edu.rmit.sept.cinemas.movies.storePrice.store;
+package superPrice.storePrice.store;
 
 public class Store {
 

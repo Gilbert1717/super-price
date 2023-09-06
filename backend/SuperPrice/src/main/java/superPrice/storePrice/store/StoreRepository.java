@@ -1,4 +1,4 @@
-package au.edu.rmit.sept.cinemas.movies.storePrice.store;
+package superPrice.storePrice.store;
 
 import java.util.Collection;
 

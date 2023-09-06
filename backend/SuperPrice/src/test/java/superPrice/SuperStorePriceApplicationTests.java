@@ -1,4 +1,4 @@
-package au.edu.rmit.sept.cinemas.movies;
+package superPrice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

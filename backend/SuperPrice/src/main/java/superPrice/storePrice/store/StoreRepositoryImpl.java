@@ -1,6 +1,7 @@
-package au.edu.rmit.sept.cinemas.movies.storePrice.product;
+package superPrice.storePrice.store;
 
-import au.edu.rmit.sept.cinemas.movies.RepositoryImpl;
+
+import superPrice.RepositoryImpl;
 import org.springframework.jdbc.datasource.init.UncategorizedScriptException;
 import org.springframework.stereotype.Repository;
 
@@ -11,42 +12,46 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 @Repository
-public class ProductRepositoryImpl extends RepositoryImpl implements ProductRepository{
+public class StoreRepositoryImpl extends RepositoryImpl implements StoreRepository{
+
+
     @Override
-    public Collection<Product> findProductByCategory(String category){
+    public Store findStoreByStoreId(String storeID){
         try {
             Connection connection = getDataSource().getConnection();
-            String query = "select * from product where category=?";
+            String query = "select * from store where store_id=?";
             PreparedStatement stm = connection.prepareStatement(query);
-            stm.setString(1, category);
-            Collection<Product> products = new ArrayList<>();
+            stm.setString(1, storeID);
+            Collection<Store> stores = new ArrayList<>();
             ResultSet rs = stm.executeQuery();
-            while (rs.next()) {
-                Product m = new Product(rs.getString(1), rs.getString(2), rs.getString(3));
-                products.add(m);
+            Store s = new Store();
+            if(rs.next()){
+                 s = new Store(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getInt(4));
             }
             connection.close();
-            return products;
+            return s;
         } catch (SQLException e) {
             throw new UncategorizedScriptException("Error in findProductByCategory", e);
         }
     }
 
     @Override
-    public Product findProductByBarcode(String barcode){
+    public Collection<Store> findStoreByName(String name){
         try {
             Connection connection = getDataSource().getConnection();
-            String query = "select * from Product where Barcode=?";
+            String query = "select * from store where name=?";
             PreparedStatement stm = connection.prepareStatement(query);
-            stm.setString(1, barcode);
-            System.out.println(stm);
+            stm.setString(1, name);
+            Collection<Store> stores = new ArrayList<>();
             ResultSet rs = stm.executeQuery();
-            Product p = new Product();
-            if(rs.next()){
-                p = new Product(rs.getString(1), rs.getString(2), rs.getString(3));
+            while (rs.next()) {
+                Store s = new Store(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getInt(4));
+                stores.add(s);
             }
             connection.close();
-            return p;
+            return stores;
         } catch (SQLException e) {
             throw new UncategorizedScriptException("Error in findProductByBarcode", e);
         }

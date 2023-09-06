@@ -1,9 +1,8 @@
-package au.edu.rmit.sept.cinemas.movies.storePrice;
+package superPrice.storePrice;
 
-import au.edu.rmit.sept.cinemas.movies.storePrice.price.Price;
-import au.edu.rmit.sept.cinemas.movies.storePrice.product.Product;
-import au.edu.rmit.sept.cinemas.movies.storePrice.store.Store;
-
+import superPrice.storePrice.price.Price;
+import superPrice.storePrice.product.Product;
+import superPrice.storePrice.store.Store;
 
 
 public class StorePrice {
