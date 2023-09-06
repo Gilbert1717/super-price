@@ -21,6 +21,10 @@ interface StorePriceService {
 
     Product findProductByBarcode(String barcode);
 
+    Collection<Product> findAll();
+
+    Collection<Product> findProductByName(String name);
+
     /**
      * return list of prices which matches the input barcode
      */

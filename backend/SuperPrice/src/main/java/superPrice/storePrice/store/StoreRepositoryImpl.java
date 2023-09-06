@@ -19,9 +19,9 @@ public class StoreRepositoryImpl extends RepositoryImpl implements StoreReposito
     public Store findStoreByStoreId(String storeID){
         try {
             Connection connection = getDataSource().getConnection();
-            String query = "select * from store where store_id=?";
+            String query = "select * from store where UPPER(store_id)=?";
             PreparedStatement stm = connection.prepareStatement(query);
-            stm.setString(1, storeID);
+            stm.setString(1, storeID.toUpperCase());
             Collection<Store> stores = new ArrayList<>();
             ResultSet rs = stm.executeQuery();
             Store s = new Store();
@@ -40,9 +40,10 @@ public class StoreRepositoryImpl extends RepositoryImpl implements StoreReposito
     public Collection<Store> findStoreByName(String name){
         try {
             Connection connection = getDataSource().getConnection();
-            String query = "select * from store where name=?";
+            String query = "select * from store where UPPER(name)=?";
             PreparedStatement stm = connection.prepareStatement(query);
-            stm.setString(1, name);
+            stm.setString(1, name.toUpperCase());
+            System.out.println(stm);
             Collection<Store> stores = new ArrayList<>();
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {

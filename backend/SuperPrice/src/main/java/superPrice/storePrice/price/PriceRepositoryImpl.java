@@ -18,10 +18,10 @@ public class PriceRepositoryImpl extends RepositoryImpl implements PriceReposito
     public Price findPricesByStoreIdAndBarcode(String storeId, String barcode){
         try {
             Connection connection = getDataSource().getConnection();
-            String priceQuery = "select * from store where store_id=? and barcode=?";
+            String priceQuery = "select * from store where UPPER(store_id)=? and UPPER(barcode)=?";
             PreparedStatement stm = connection.prepareStatement(priceQuery);
-            stm.setString(1, storeId);
-            stm.setString(2, barcode);
+            stm.setString(1, storeId.toUpperCase());
+            stm.setString(2, barcode.toUpperCase());
             ResultSet rs = stm.executeQuery();
             Price price = new Price(rs.getString(1),rs.getInt(2),
                     rs.getDouble(3), rs.getString(4));
@@ -35,9 +35,9 @@ public class PriceRepositoryImpl extends RepositoryImpl implements PriceReposito
     public Collection<Price> findPricesByBarcode(String barcode){
         try {
             Connection connection = getDataSource().getConnection();
-            String priceQuery = "select * from store_price where barcode=?";
+            String priceQuery = "select * from store_price where UPPER(barcode)=?";
             PreparedStatement stm = connection.prepareStatement(priceQuery);
-            stm.setString(1, barcode);
+            stm.setString(1, barcode.toUpperCase());
             ResultSet rs = stm.executeQuery();
             ArrayList<Price> prices = new ArrayList<>();
             while (rs.next()) {

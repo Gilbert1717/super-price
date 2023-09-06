@@ -28,6 +28,10 @@ public class StorePriceServiceImpl implements StorePriceService {
      * return list of products which matches the input catergory
      */
     @Override
+    public Collection<Product> findAll(){
+        return this.productRepositoryImpl.findAll();
+    }
+    @Override
     public Collection<Product> findProductByCategory(String category){
         return this.productRepositoryImpl.findProductByCategory(category);
     }
@@ -44,6 +48,11 @@ public class StorePriceServiceImpl implements StorePriceService {
         }
         return storePrices;
     }
+    @Override
+    public Collection<Product> findProductByName(String name){
+        return this.productRepositoryImpl.findProductByName(name);
+    }
+
 
     public Store findStoreById(String id){
 

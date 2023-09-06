@@ -15,9 +15,6 @@ public class Price {
     public Price(String barcode, int storeid,  double price, String status) {
         this.barcode = barcode;
         this.storeid = storeid;
-        // this.storeName = storeName;
-        // this.storePostcode = storePostcode;
-        // this.productName = productName;
         this.price = price;
         this.status = status;
     }

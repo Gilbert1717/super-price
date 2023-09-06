@@ -24,6 +24,11 @@ public class StorePriceController {
         return this.StorePriceServiceImpl.findProductByCategory(category);
     }
 
+    @GetMapping(value = "product")
+    public Collection<Product> findAll() {
+        return this.StorePriceServiceImpl.findAll();
+    }
+
     @GetMapping(value = "product/barcode:{barcode}")
     public Product findProductByBarcode(@PathVariable String barcode) {
         return this.StorePriceServiceImpl.findProductByBarcode(barcode);
@@ -37,6 +42,11 @@ public class StorePriceController {
     @GetMapping(value = "store/{storeid}")
     public Store findStoreByStoreId(@PathVariable String storeid) {
         return this.StorePriceServiceImpl.findStoreById(storeid);
+    }
+
+    @GetMapping(value = "product/name:{name}")
+    public Collection<Product> findProductByName(@PathVariable String name) {
+        return this.StorePriceServiceImpl.findProductByName(name);
     }
 
 }
