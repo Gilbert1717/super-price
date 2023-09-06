@@ -64,7 +64,7 @@ public class PriceRepositoryImpl extends RepositoryImpl implements PriceReposito
     public Collection<Price> findPricesByStoreID(String StoreId){
         try {
             Connection connection = getDataSource().getConnection();
-            String priceQuery = "select * from store_price where store_id=?";
+            String priceQuery = "select * from store_price sp, store s, product p where store_id=? join ";
             PreparedStatement stm = connection.prepareStatement(priceQuery);
             stm.setString(1, StoreId);
             ResultSet rs = stm.executeQuery();

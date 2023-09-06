@@ -5,8 +5,6 @@ package au.edu.rmit.sept.cinemas.movies.storePrice.product;
 
 public class Product {
     private String barcode;
-
-
     private String name;
     private String category;
 

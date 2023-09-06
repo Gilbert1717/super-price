@@ -3,15 +3,21 @@ package au.edu.rmit.sept.cinemas.movies.storePrice.price;
 public class Price {
     private String barcode;
     private int storeid;
+    private String storeName;
+    private String storePostcode;
+    private String productName;
     private double price;
     private String status;
 
     public Price() {
     }
 
-    public Price(String barcode, int storeid, double price, String status) {
+    public Price(String barcode, int storeid, String storeName, String storePostcode, String productName, double price, String status) {
         this.barcode = barcode;
         this.storeid = storeid;
+        this.storeName = storeName;
+        this.storePostcode = storePostcode;
+        this.productName = productName;
         this.price = price;
         this.status = status;
     }
@@ -30,6 +36,30 @@ public class Price {
 
     public void setStoreid(int storeid) {
         this.storeid = storeid;
+    }
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
+
+    public String getStorePostcode() {
+        return storePostcode;
+    }
+
+    public void setStorePostcode(String storePostcode) {
+        this.storePostcode = storePostcode;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public double getPrice() {
