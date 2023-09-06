@@ -1,0 +1,123 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.background{
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(25, 25, 25, 0.75), rgba(25, 25, 25, 0.75)), url(./images/backgroud.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  width: '100vw';
+  height: '100%';
+}
+
+.header {
+  width: 95%;
+  margin: auto;
+  padding: 30px 0;
+  display:  flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 200px;
+  cursor: pointer;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: right;
+  justify-content: center;
+  border-radius: 60px; /* make edges more round*/
+  padding: 5px 5px;
+  backdrop-filter: blur(4px) saturate(180%);
+}
+
+.search-bar input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 5px 5px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+::placeholder {
+  color: #ffffff;
+}
+
+.search-bar button img {
+  width: 20px;
+}
+
+.search-bar button {
+  border: 0;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: #999999;
+  cursor: pointer;
+}
+
+
+.categories {
+  width: 100%;
+  position: absolute; /* Position absolutely */
+  top: 90px; /* Distance from the top */
+  transform: translateX(-50%); /* Adjust for horizontal centering */
+  text-align: center; /* Center-align the text inside the content */
+  left: 50%; /* Horizontally center the content */
+  color: #ffffff;
+}
+
+.categories h1 {
+  font-size: 25px;
+  margin-top: 10px;
+  font-family: cursive;
+}
+
+.categories button {
+  width: 200px;
+  padding: 44px 0;
+  text-align: center;
+  margin: 20px 10px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-family: cursive;
+  border: 2px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.categories span {
+  background: #ffffff;
+  height: 100%;
+  width: 0;
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.categories button:hover span {
+  width: 100%;
+}
+
+.categories button:hover {
+  border: none;
+}
