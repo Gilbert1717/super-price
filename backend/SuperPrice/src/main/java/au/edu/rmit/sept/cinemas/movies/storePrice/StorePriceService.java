@@ -1,19 +1,25 @@
-package au.edu.rmit.sept.cinemas.movies.price;
+package au.edu.rmit.sept.cinemas.movies.storePrice;
 
-import au.edu.rmit.sept.cinemas.movies.price.product.Product;
+import au.edu.rmit.sept.cinemas.movies.storePrice.product.Product;
+import au.edu.rmit.sept.cinemas.movies.storePrice.store.Store;
 
 import java.util.Collection;
 
-interface PriceService {
+interface StorePriceService {
     /**
      * return list of products which matches the input catergory
      */
-    public Collection<Product> SearchByCategory(String category);
+    Collection<Product> findProductByCategory(String category);
 
     /**
      * return list of prices which matches the input product name
      */
-//    public List<Price> SearchByName(String name);
+    Collection<StorePrice> findStorePriceByBarcode(String barcode);
+
+
+    Store findStoreById(String id);
+
+    Product findProductByBarcode(String barcode);
 
     /**
      * return list of prices which matches the input barcode
