@@ -1,10 +1,9 @@
-package au.edu.rmit.sept.cinemas.movies.price.product;
+package superPrice.storePrice.product;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-@Entity
+
+//import au.edu.rmit.sept.cinemas.movies.price.StorePrice;
+
 public class Product {
-    @Id
     private String barcode;
     private String name;
     private String category;
@@ -13,6 +12,11 @@ public class Product {
 
     }
 
+    public Product(String barcode, String name, String category) {
+        this.barcode = barcode;
+        this.name = name;
+        this.category = category;
+    }
     public String getBarcode() {
         return barcode;
     }
