@@ -6,7 +6,7 @@ function Categories() {
   const categories = ["Electronics", "Appliances", "Beauty", "Furniture", "Accessories", "Grocery", "Stationery", "Fitness", "Footwear"];
 
   return (
-    <div className='categories'>
+    <div className='content'>
       <h1>Search category</h1>
       {categories.map((category, _) => (
           <button key={uuidv4()}><span></span>{category}</button>

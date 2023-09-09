@@ -14,7 +14,7 @@ function App() {
           <Header />
             <Routes>
               <Route path="/" element={<Categories />} />
-              <Route path="/search-results" element={<SearchResults />} />
+              <Route path="/search-results/:query" element={<SearchResults />} />
             </Routes>
           </BrowserRouter>
       </div>

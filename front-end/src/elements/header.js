@@ -8,6 +8,12 @@ function Header() {
   const navigate = useNavigate();
   const [inputText, setInputText] = useState('');
 
+  function search() {
+    if (inputText) {
+      navigate(`/search-results/${inputText}`)
+    } 
+  }
+
   return (
     <div className='background'>
       <div className='header'>
@@ -19,7 +25,7 @@ function Header() {
             onChange={(event)=>{setInputText(event.target.value);}}
             placeholder="Enter product name..."
           />
-          <button onClick={()=>{navigate('/search-results')}}><img src={searchBtn} alt="magnifying glass"/></button>
+          <button onClick={search}><img src={searchBtn} alt="magnifying glass"/></button>
         </div>
       </div>
     </div>
