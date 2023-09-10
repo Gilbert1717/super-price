@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class StoreTests {
     // format: Store(int storeId, String name, String address, int postcode)
     @Test
-    void should_return_price_details() {
+    void should_return_store_details() {
         Store s = new Store(123, "ABC",  "XYZ", 321);
         assertEquals(123, s.getStoreId());
         assertEquals("ABC", s.getName());
