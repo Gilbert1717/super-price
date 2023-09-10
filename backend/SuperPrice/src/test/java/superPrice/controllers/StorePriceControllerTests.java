@@ -68,8 +68,9 @@ public class StorePriceControllerTests {
     }
 
     @Test
-    void should_not_return_any_product() {
-        Product p1 = new Product("ABC", "XYZ", "CAT");
+    void should_not_return_details_when_product_does_not_exist() {
         assertNull(service.findProductByBarcode("ABC"));
     }
+
+
 }
