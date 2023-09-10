@@ -26,8 +26,8 @@ public class StorePriceController {
     }
 
     @GetMapping(value = "product")
-    public Collection<Product> findAll() {
-        return this.service.findAll();
+    public Collection<Product> findAllProducts() {
+        return this.service.findAllProducts();
     }
 
     @GetMapping(value = "product/barcode:{barcode}")

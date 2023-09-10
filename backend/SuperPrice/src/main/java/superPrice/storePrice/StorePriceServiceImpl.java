@@ -28,7 +28,7 @@ public class StorePriceServiceImpl implements StorePriceService {
      * return list of products which matches the input catergory
      */
     @Override
-    public Collection<Product> findAll(){
+    public Collection<Product> findAllProducts(){
         return this.productRepositoryImpl.findAll();
     }
     @Override

@@ -21,7 +21,7 @@ public interface StorePriceService {
 
     Product findProductByBarcode(String barcode);
 
-    Collection<Product> findAll();
+    Collection<Product> findAllProducts();
 
     Collection<Product> findProductByName(String name);
 
