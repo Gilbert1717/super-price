@@ -16,7 +16,7 @@ public class ProductRepositoryImpl extends RepositoryImpl implements ProductRepo
     public Collection<Product> findAll(){
         try {
             Connection connection = getDataSource().getConnection();
-            String query = "select * from product";
+            String query = "select * from \"product\"";
             PreparedStatement stm = connection.prepareStatement(query);
             Collection<Product> products = new ArrayList<>();
             ResultSet rs = stm.executeQuery();
@@ -78,6 +78,27 @@ public class ProductRepositoryImpl extends RepositoryImpl implements ProductRepo
             String query = "select * from product where UPPER(name) regexp ?";
             PreparedStatement stm = connection.prepareStatement(query);
             stm.setString(1, ".*" + name.toUpperCase() + ".*");
+            Collection<Product> products = new ArrayList<>();
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Product m = new Product(rs.getString(1), rs.getString(2), rs.getString(3));
+                products.add(m);
+            }
+            connection.close();
+            return products;
+        } catch (SQLException e) {
+            throw new UncategorizedScriptException("Error in findProductByCategory", e);
+        }
+    }
+
+    public Collection<Product> findProductByAnyCondition(String condition){
+        try {
+            Connection connection = getDataSource().getConnection();
+            String query = "select * from product where UPPER(name) regexp ? or UPPER(barcode) regexp ? or UPPER(Category) regexp ?";
+            PreparedStatement stm = connection.prepareStatement(query);
+            stm.setString(1, ".*" + condition.toUpperCase() + ".*");
+            stm.setString(2, ".*" + condition.toUpperCase() + ".*");
+            stm.setString(3, ".*" + condition.toUpperCase() + ".*");
             Collection<Product> products = new ArrayList<>();
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {

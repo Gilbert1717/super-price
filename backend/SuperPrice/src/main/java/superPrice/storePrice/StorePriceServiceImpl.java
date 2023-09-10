@@ -55,14 +55,15 @@ public class StorePriceServiceImpl implements StorePriceService {
 
 
     public Store findStoreById(String id){
-
-        Store s = this.storeServiceImpl.findStoreByStoreId(id);
-        return s;
+        return this.storeServiceImpl.findStoreByStoreId(id);
     }
 
     public Product findProductByBarcode(String barcode){
-        Product p = this.productRepositoryImpl.findProductByBarcode(barcode);
-        return p;
+        return this.productRepositoryImpl.findProductByBarcode(barcode);
+    }
+
+    public Collection<Product> findProductsByAnyCondition(String condition){
+        return this.productRepositoryImpl.findProductByAnyCondition(condition);
     }
 
 

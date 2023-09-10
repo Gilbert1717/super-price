@@ -49,4 +49,8 @@ public class StorePriceController {
         return this.StorePriceServiceImpl.findProductByName(name);
     }
 
+    @GetMapping(value = "product/{name}")
+    public Collection<Product> findProductByAnyCondition(@PathVariable String condition) {
+        return this.StorePriceServiceImpl.findProductByName(condition);
+    }
 }
