@@ -14,43 +14,44 @@ import java.util.Collection;
 @RequestMapping(value = "price")
 public class StorePriceController {
     @Autowired
-    private StorePriceService StorePriceServiceImpl;
+    private StorePriceService service;
 
-//    public StorePriceController(StorePriceService storePriceService) {
-//        this.StorePriceService = storePriceService;
-//    }
+    public StorePriceController(StorePriceService storePriceService) {
+        this.service = storePriceService;
+    }
+
     @GetMapping(value = "product/category:{category}")
     public Collection<Product> findProductByCategory(@PathVariable String category) {
-        return this.StorePriceServiceImpl.findProductByCategory(category);
+        return this.service.findProductByCategory(category);
     }
 
     @GetMapping(value = "product")
     public Collection<Product> findAll() {
-        return this.StorePriceServiceImpl.findAll();
+        return this.service.findAll();
     }
 
     @GetMapping(value = "product/barcode:{barcode}")
     public Product findProductByBarcode(@PathVariable String barcode) {
-        return this.StorePriceServiceImpl.findProductByBarcode(barcode);
+        return this.service.findProductByBarcode(barcode);
     }
 
     @GetMapping(value = "storePrice/{barcode}")
     public Collection<StorePrice> findPriceByProductBarcode(@PathVariable String barcode) {
-        return this.StorePriceServiceImpl.findStorePriceByBarcode(barcode);
+        return this.service.findStorePriceByBarcode(barcode);
     }
 
     @GetMapping(value = "store/{storeid}")
     public Store findStoreByStoreId(@PathVariable String storeid) {
-        return this.StorePriceServiceImpl.findStoreById(storeid);
+        return this.service.findStoreById(storeid);
     }
 
     @GetMapping(value = "product/name:{name}")
     public Collection<Product> findProductByName(@PathVariable String name) {
-        return this.StorePriceServiceImpl.findProductByName(name);
+        return this.service.findProductByName(name);
     }
 
     @GetMapping(value = "product/{name}")
     public Collection<Product> findProductByAnyCondition(@PathVariable String condition) {
-        return this.StorePriceServiceImpl.findProductByName(condition);
+        return this.service.findProductByName(condition);
     }
 }
