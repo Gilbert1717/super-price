@@ -98,4 +98,76 @@ public class StorePriceControllerTests {
             .thenReturn(new ArrayList<>());
         assertEquals(0, controller.findPriceByProductBarcode("ABC").size());
     }
+
+    @Test
+    void should_return_store_with_full_id() {
+        Store s = new Store(123, "ABC",  "XYZ", 321);
+        when(service.findStoreById("123"))
+            .thenReturn(s);
+        assertEquals(s, controller.findStoreByStoreId("123"));
+    }
+
+    @Test
+    void should_not_return_store_when_no_match() {
+        Store s = new Store(123, "ABC",  "XYZ", 321);
+        when(service.findStoreById("321"))
+            .thenReturn(null);
+        assertNull(controller.findStoreByStoreId("321"));
+    }
+
+    @Test
+    void should_return_product_from_full_match_name() {
+        Product p = new Product("ABC", "XYZ", "CAT");
+        when(service.findProductByName("XYZ"))
+                .thenReturn(List.of(p));
+        assertEquals(List.of(p), controller.findProductByName("XYZ"));
+    }
+
+    @Test
+    void should_return_product_from_partial_match_name() {
+        Product p = new Product("ABC", "XYZ", "CAT");
+        when(service.findProductByName("X"))
+                .thenReturn(List.of(p));
+        assertEquals(List.of(p), controller.findProductByName("X"));
+    }
+
+    @Test
+    void findByName_should_return_no_product_when_no_match() {
+        Product p = new Product("ABC", "XYZ", "CAT");
+        when(service.findProductByName("ABC"))
+                .thenReturn(List.of());
+        assertEquals(0, controller.findProductByName("ABC").size());
+    }
+
+    @Test
+    void should_return_product_searched_by_id() {
+        Product p = new Product("ABC", "XYZ", "CAT");
+        when(service.findProductsByAnyCondition("ABC"))
+                .thenReturn(List.of(p));
+        assertEquals(List.of(p), controller.findProductByAnyCondition("ABC"));
+    }
+
+    @Test
+    void should_return_product_searched_by_full_name() {
+        Product p = new Product("ABC", "XYZ", "CAT");
+        when(service.findProductsByAnyCondition("XYZ"))
+                .thenReturn(List.of(p));
+        assertEquals(List.of(p), controller.findProductByAnyCondition("XYZ"));
+    }
+
+    @Test
+    void should_return_product_searched_by_partial_name() {
+        Product p = new Product("ABC", "XYZ", "CAT");
+        when(service.findProductsByAnyCondition("X"))
+                .thenReturn(List.of(p));
+        assertEquals(List.of(p), controller.findProductByAnyCondition("X"));
+    }
+
+    @Test
+    void findByAny_should_return_no_product_when_no_match() {
+        Product p = new Product("ABC", "XYZ", "CAT");
+        when(service.findProductsByAnyCondition("MMM"))
+                .thenReturn(List.of());
+        assertEquals(0, controller.findProductByAnyCondition("MMM").size());
+    }
 }
