@@ -21,7 +21,7 @@ public class StorePriceServiceImpl implements StorePriceService {
     @Autowired
     private ProductRepository productRepositoryImpl;
     @Autowired
-    private StoreRepository storeServiceImpl;
+    private StoreRepository storeRepositoryImpl;
 
 
     /**
@@ -42,7 +42,7 @@ public class StorePriceServiceImpl implements StorePriceService {
         Collection<Price> prices = this.priceRepositoryImpl.findPricesByBarcode(barcode);
         Collection<StorePrice> storePrices = new ArrayList<>();
         for (Price price:prices){
-            Store s = this.storeServiceImpl.findStoreByStoreId(Integer.toString(price.getStoreid()));
+            Store s = this.storeRepositoryImpl.findStoreByStoreId(Integer.toString(price.getStoreid()));
             StorePrice sp = new StorePrice(p,s,price);
             storePrices.add(sp);
         }
@@ -55,7 +55,7 @@ public class StorePriceServiceImpl implements StorePriceService {
 
 
     public Store findStoreById(String id){
-        return this.storeServiceImpl.findStoreByStoreId(id);
+        return this.storeRepositoryImpl.findStoreByStoreId(id);
     }
 
     public Product findProductByBarcode(String barcode){
