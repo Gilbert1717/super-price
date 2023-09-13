@@ -16,22 +16,22 @@ jobs:
       - name: Build with Maven
         working-directory: backend/SuperPrice
         run: ./mvnw --batch-mode --update-snapshots package
+  
   build-frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 16.16.0
         uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-      # - uses: actions/checkout@v3
-
-      - name: Install dependencies
+     
+      - name: Install dependinces 
+        working-directory: front-end 
         run: npm install
 
-    #   - name: Build and test
-    #     run: npm run build
-
-      - name: Run tests
+      - name: Run tests 
+        working-directory: front-end  
         run: npm test
-        working-directory: frontend 
+
+      - name: Build
+        working-directory: front-end  
+        run: npm run build
