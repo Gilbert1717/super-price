@@ -21,14 +21,14 @@ public class StorePriceServiceImpl implements StorePriceService {
     @Autowired
     private ProductRepository productRepositoryImpl;
     @Autowired
-    private StoreRepository storeServiceImpl;
+    private StoreRepository storeRepositoryImpl;
 
 
     /**
      * return list of products which matches the input catergory
      */
     @Override
-    public Collection<Product> findAll(){
+    public Collection<Product> findAllProducts(){
         return this.productRepositoryImpl.findAll();
     }
     @Override
@@ -42,7 +42,7 @@ public class StorePriceServiceImpl implements StorePriceService {
         Collection<Price> prices = this.priceRepositoryImpl.findPricesByBarcode(barcode);
         Collection<StorePrice> storePrices = new ArrayList<>();
         for (Price price:prices){
-            Store s = this.storeServiceImpl.findStoreByStoreId(Integer.toString(price.getStoreid()));
+            Store s = this.storeRepositoryImpl.findStoreByStoreId(Integer.toString(price.getStoreid()));
             StorePrice sp = new StorePrice(p,s,price);
             storePrices.add(sp);
         }
@@ -55,14 +55,15 @@ public class StorePriceServiceImpl implements StorePriceService {
 
 
     public Store findStoreById(String id){
-
-        Store s = this.storeServiceImpl.findStoreByStoreId(id);
-        return s;
+        return this.storeRepositoryImpl.findStoreByStoreId(id);
     }
 
     public Product findProductByBarcode(String barcode){
-        Product p = this.productRepositoryImpl.findProductByBarcode(barcode);
-        return p;
+        return this.productRepositoryImpl.findProductByBarcode(barcode);
+    }
+
+    public Collection<Product> findProductsByAnyCondition(String condition){
+        return this.productRepositoryImpl.findProductByAnyCondition(condition);
     }
 
 

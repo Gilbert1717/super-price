@@ -5,7 +5,7 @@ import superPrice.storePrice.store.Store;
 
 import java.util.Collection;
 
-interface StorePriceService {
+public interface StorePriceService {
     /**
      * return list of products which matches the input catergory
      */
@@ -21,9 +21,11 @@ interface StorePriceService {
 
     Product findProductByBarcode(String barcode);
 
-    Collection<Product> findAll();
+    Collection<Product> findAllProducts();
 
     Collection<Product> findProductByName(String name);
+
+    Collection<Product> findProductsByAnyCondition(String name);
 
     /**
      * return list of prices which matches the input barcode

@@ -11,5 +11,7 @@ public interface  ProductRepository {
 
     Product findProductByBarcode(String barcode);
     Collection<Product> findProductByName(String name);
+
+    Collection<Product> findProductByAnyCondition(String condition);
 }
 

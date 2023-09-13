@@ -1,52 +1,59 @@
 package superPrice.storePrice;
 
-import superPrice.storePrice.product.Product;
-import superPrice.storePrice.store.Store;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import superPrice.storePrice.product.Product;
+import superPrice.storePrice.store.Store;
 
 import java.util.Collection;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "price")
 public class StorePriceController {
-    @Autowired
-    private StorePriceService StorePriceServiceImpl;
+    private final StorePriceService service;
 
-//    public StorePriceController(StorePriceService storePriceService) {
-//        this.StorePriceService = storePriceService;
-//    }
+    @Autowired
+    public StorePriceController(StorePriceService storePriceService) {
+        this.service = storePriceService;
+    }
+
     @GetMapping(value = "product/category:{category}")
     public Collection<Product> findProductByCategory(@PathVariable String category) {
-        return this.StorePriceServiceImpl.findProductByCategory(category);
+        return this.service.findProductByCategory(category);
     }
 
     @GetMapping(value = "product")
-    public Collection<Product> findAll() {
-        return this.StorePriceServiceImpl.findAll();
+    public Collection<Product> findAllProducts() {
+        return this.service.findAllProducts();
     }
 
     @GetMapping(value = "product/barcode:{barcode}")
     public Product findProductByBarcode(@PathVariable String barcode) {
-        return this.StorePriceServiceImpl.findProductByBarcode(barcode);
+        return this.service.findProductByBarcode(barcode);
     }
 
     @GetMapping(value = "storePrice/{barcode}")
     public Collection<StorePrice> findPriceByProductBarcode(@PathVariable String barcode) {
-        return this.StorePriceServiceImpl.findStorePriceByBarcode(barcode);
+        return this.service.findStorePriceByBarcode(barcode);
     }
 
     @GetMapping(value = "store/{storeid}")
     public Store findStoreByStoreId(@PathVariable String storeid) {
-        return this.StorePriceServiceImpl.findStoreById(storeid);
+        return this.service.findStoreById(storeid);
     }
 
     @GetMapping(value = "product/name:{name}")
     public Collection<Product> findProductByName(@PathVariable String name) {
-        return this.StorePriceServiceImpl.findProductByName(name);
+        return this.service.findProductByName(name);
     }
 
+    @GetMapping(value = "product/{condition}")
+    public Collection<Product> findProductByAnyCondition(@PathVariable String condition) {
+        return this.service.findProductsByAnyCondition(condition);
+    }
 }
