@@ -39,7 +39,7 @@ function SearchResults() {
             </>
           }</button>
         )) : ""}
-        {data != null ? (data.length == 0 ? <><br /><h2>No Results Found.</h2></>:""):""}
+        {data != null ? (data.length === 0 ? <><br /><h2>No Results Found.</h2></>:""):""}
       </div>
     );
   }
