@@ -2,7 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Footer from './elements/footer';
 import Categories from './pages/categories';
 import SearchResults from './pages/search_results';
-
+import CategoryResults from './pages/category_result';
+import ComparePrices from './pages/compare_prices';
 import Header from './elements/header';
 import './App.css';
 
@@ -15,10 +16,13 @@ function App() {
             <Routes>
               <Route path="/" element={<Categories />} />
               <Route path="/search-results/:query" element={<SearchResults />} />
+              <Route path="/category-results/:query" element={<CategoryResults />} />
+              <Route path="/compare-prices/:query" element={<ComparePrices />} />
             </Routes>
           </BrowserRouter>
+          <Footer />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
