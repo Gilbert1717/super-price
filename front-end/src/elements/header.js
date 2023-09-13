@@ -17,7 +17,7 @@ function Header() {
   return (
     <div className='background'>
       <div className='header'>
-        <button onClick={()=>{navigate('/')}}><img src={logo} className= "logo" alt="super price logo"/></button>
+        <button className ="logo-button" onClick={()=>{navigate('/')}}><img src={logo} className= "logo" alt="super price logo"/></button>
         <div className='search-bar'>
           <input
             type="text"
