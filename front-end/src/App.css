@@ -5,15 +5,14 @@
 }
 
 .background{
-  margin: 0;
-  padding-bottom: 200px;
+  /* margin: 0; */
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-image: linear-gradient(rgba(25, 25, 25, 0.75), rgba(25, 25, 25, 0.75)), url(./images/backgroud.jpg);
-  background-size: cover;
+  background-size: cover; 
   background-position: center;
-  background-attachment: scroll;
-  width: '100vw';
+  background-attachment: fixed;
+  background-repeat: repeat-y;
   height: '100%';
 }
 
@@ -71,12 +70,11 @@
 }
 
 .content {
-  width: 100%;
-  position: absolute; /* Position absolutely */
-  top: 90px; /* Distance from the top */
-  transform: translateX(-50%); /* Adjust for horizontal centering */
+  width: 100%;  
+  transform: translateX(-50%); 
   text-align: center; /* Center-align the text inside the content */
-  left: 50%; /* Horizontally center the content */
+  margin-left: 50%;
+  justify-content: center;
   color: #ffffff;
 }
 
@@ -131,4 +129,9 @@
 .price {
   font-size: larger;
   color: #60ee08;
+}
+
+.footer{
+  text-align: center;
+  justify-content: center;
 }

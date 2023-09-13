@@ -15,7 +15,6 @@ function Header() {
   }
 
   return (
-    <div className='background'>
       <div className='header'>
         <button className ="logo-button" onClick={()=>{navigate('/')}}><img src={logo} className= "logo" alt="super price logo"/></button>
         <div className='search-bar'>
@@ -28,7 +27,6 @@ function Header() {
           <button onClick={search}><img src={searchBtn} alt="magnifying glass"/></button>
         </div>
       </div>
-    </div>
   );
 }
 

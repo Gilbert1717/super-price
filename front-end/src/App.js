@@ -20,9 +20,8 @@ function App() {
               <Route path="/compare-prices/:query" element={<ComparePrices />} />
             </Routes>
           </BrowserRouter>
-          <Footer />
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

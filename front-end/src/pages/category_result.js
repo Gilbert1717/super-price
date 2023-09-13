@@ -31,6 +31,7 @@ function CategoryResults() {
         {data != null ? data.map((item, _) => (
           <button onClick={()=>navigate(`/compare-prices/${item["barcode"]}`)} key={uuidv4()}>{
             <>
+            <span></span>
             {item["name"]} <br/>
             {item["category"]} <br/>
             {item["barcode"]}

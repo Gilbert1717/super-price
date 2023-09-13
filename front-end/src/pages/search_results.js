@@ -13,7 +13,7 @@ function SearchResults() {
   useEffect(() => {
     async function getSearch(product_name) {
         if (product_name){
-          const response = await axios.get(`http://localhost:8080/price/product/name:${query}`);
+          const response = await axios.get(`http://localhost:8080/price/product/${query}`);
           console.log(response)
           if (!response.data) {
             setData(null);
