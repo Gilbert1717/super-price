@@ -100,6 +100,34 @@
   overflow: hidden;
 }
 
+.AddToCart {
+  font-size: small;
+  float: right;
+  width: 40px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between; /* To evenly space the flex items */
+  
+}
+
+.flex-item {
+  flex-basis: 100%; /* Adjust the width as needed, this will create 3 evenly spaced items */
+  margin-bottom: 20px; /* Add spacing between items */
+  border: 1px solid #ccc; /* Add a border or customize as needed */
+  padding: 10px;
+  flex: fill;
+}
+
+.ProductDetails {
+  float: left;
+}
+
+.test {
+  border: 10px solid aqua;
+}
+
 .content span {
   background: #60ee08;
   height: 100%;
@@ -129,9 +157,43 @@
 .price {
   font-size: larger;
   color: #60ee08;
+  padding: 1%;
 }
 
 .footer{
   text-align: center;
   justify-content: center;
+}
+
+.compare-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  gap: 20px; /* Add vertical spacing between items */
+  padding: 2.5%;
+}
+
+.compare-item {
+  display: flex;
+  justify-content: space-between; /* Evenly space the parts horizontally */
+  align-items: center; /* Center items vertically */
+  border: 4px solid #000; /* Add a border or customize as needed */
+  padding: 10px;
+  background-color: #999999;
+  border-radius: 15px;
+}
+
+.store-name,
+.store-address {
+  flex: 1; /* Allows each part to expand and take equal space horizontally */
+  font-weight: bold;
+}
+
+.product-name {
+  flex: 1; /* Allows each part to expand and take equal space horizontally */
+  font-size: 25px;
+  font-weight: bolder;
+}
+.compareHeading{
+  align-self: center;
+  font-size: xx-large;
 }

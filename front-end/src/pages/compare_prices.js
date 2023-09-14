@@ -25,19 +25,26 @@ function ComparePrices() {
 
 
   return (
-    <div className='content'>
-      <h2>Compare Prices for <em>'{query}':</em></h2> 
-      {data != null ? data.map((price_product_store, _) => (
-          <button key={uuidv4()}>{
-            <>
-            {price_product_store["product"]["name"]} <br/>
-            {price_product_store["store"]["name"]} <br/>
-            {price_product_store["store"]["address"]} <br/>
-            <p className='price'>{price_product_store["price"]["price"]}</p>
-            </>
-          }</button>
-        )) : ""}
-    </div>
+<div className="compare-container">
+  <h2 className='compareHeading'>Compare Prices for <em>'{query}':</em></h2>
+  {data != null
+    ? data.map((price_product_store, _) => (
+        <div className="compare-item" key={uuidv4()}>
+          <div className="product-name">
+            {price_product_store["product"]["name"]}
+          </div>
+          <div className="store-name">
+            {price_product_store["store"]["name"]}
+          </div>
+          <div className="store-address">
+            {price_product_store["store"]["address"]}
+          </div>
+          <p className='price'>{"$" + price_product_store["price"]["price"]}</p>
+          <button className='AddToCart'>add to cart</button>
+        </div>
+      ))
+    : ""}
+</div>
   );
 }
 
