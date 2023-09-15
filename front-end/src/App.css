@@ -107,6 +107,7 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  background-color: rgba(10, 51, 7, 0.5);
 }
 
 .content span {
