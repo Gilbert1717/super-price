@@ -1,6 +1,4 @@
-// Create a CartContext.js file
-
-import { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
 
 // Define an initial state for the cart
 const initialState = {
@@ -23,8 +21,10 @@ function cartReducer(state, action) {
                 items: [...state.items, action.payload],
             };
         case REMOVE_FROM_CART:
-            // Implement remove logic if needed
-            return state;
+            return {
+                ...state,
+                items: state.items.filter((item, index) => index !== action.payload),
+            };
         default:
             return state;
     }
@@ -50,4 +50,4 @@ function useCart() {
     return context;
 }
 
-export { CartProvider, useCart, ADD_TO_CART };
+export { CartProvider, useCart, ADD_TO_CART, REMOVE_FROM_CART };
