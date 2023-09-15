@@ -26,6 +26,12 @@ function Header() {
           />
           <button onClick={search}><img src={searchBtn} alt="magnifying glass"/></button>
         </div>
+          <div>
+              <button className="ViewCart">View Cart</button>
+          </div>
+          <div>
+              <button className="Profile">User Profile</button>
+          </div>
       </div>
   );
 }

@@ -25,6 +25,15 @@
   justify-content: center;
 }
 
+.ViewCart {
+  padding: 1%;
+  margin-inline: 40px;
+}
+
+.Profile {
+  padding: 1%;
+}
+
 .logo {
   width: 200px;
   cursor: pointer;
@@ -100,34 +109,6 @@
   overflow: hidden;
 }
 
-.AddToCart {
-  font-size: small;
-  float: right;
-  width: 40px;
-}
-
-.flex-container {
-  display: flex;
-  justify-content: space-between; /* To evenly space the flex items */
-  
-}
-
-.flex-item {
-  flex-basis: 100%; /* Adjust the width as needed, this will create 3 evenly spaced items */
-  margin-bottom: 20px; /* Add spacing between items */
-  border: 1px solid #ccc; /* Add a border or customize as needed */
-  padding: 10px;
-  flex: fill;
-}
-
-.ProductDetails {
-  float: left;
-}
-
-.test {
-  border: 10px solid aqua;
-}
-
 .content span {
   background: #60ee08;
   height: 100%;
@@ -157,6 +138,7 @@
 .price {
   font-size: larger;
   color: #60ee08;
+  width: 69px;
   padding: 1%;
 }
 
