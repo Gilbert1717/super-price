@@ -43,7 +43,7 @@ function CheckoutPage() {
 
                         <div className="inputBox">
                             <span>cards accepted :</span>
-                            <img src="front-end/src/images/card_img.png" alt="" /> <!-- WHY IS IMAGE NOT FOUND -->
+                            <img src="front-end/src/images/card_img.png" alt="" />  WHY IS IMAGE NOT FOUND -->
                         </div>
                         <div className="inputBox">
                             <span>name on card :</span>
