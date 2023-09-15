@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams } from 'react-router-dom';
 import axios from "axios"
+import { useCart, ADD_TO_CART } from './CartContext'; // Import the CartContext
   
 function ComparePrices() {
   const { query } = useParams();
   const [data, setData] = useState(null);
+  const { dispatch } = useCart(); // Access the cart context
   
   useEffect(() => {
     async function getSearch(product_name) {
@@ -23,6 +25,10 @@ function ComparePrices() {
     getSearch(query);
   }, [query])
 
+  // Function to add an item to the cart
+  function addToCart(item) {
+    dispatch({ type: ADD_TO_CART, payload: item });
+  }
 
   return (
       <div className="compare-container">
@@ -40,7 +46,13 @@ function ComparePrices() {
                     {price_product_store["store"]["address"]}
                   </div>
                   <p className='price'>{"$" + price_product_store["price"]["price"]}</p>
-                  <button className='AddToCart'>add to cart</button>
+                  <button className='AddToCart' onClick={() => addToCart({
+                    name: price_product_store["product"]["name"],
+                    store: price_product_store["store"]["name"],
+                    price: price_product_store["price"]["price"],
+                  })}>
+                    Add to Cart
+                  </button>
                 </div>
             ))
             : ""}
