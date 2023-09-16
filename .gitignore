@@ -1,4 +1,5 @@
 # Intellij
 .idea
 
-front-end/node_modules/
+# react
+/front-end/node_modules/
