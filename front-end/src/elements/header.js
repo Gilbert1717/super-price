@@ -13,7 +13,7 @@ function Header() {
       navigate(`/search-results/${inputText}`)
     } 
   }
-
+  
   return (
       <div className='header'>
         <button className ="logo-button" onClick={()=>{navigate('/')}}><img src={logo} className= "logo" alt="super price logo"/></button>
