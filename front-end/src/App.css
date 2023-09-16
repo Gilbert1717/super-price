@@ -141,6 +141,8 @@
   color: #60ee08;
   width: 69px;
   padding: 1%;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .footer{
@@ -165,8 +167,7 @@
   border-radius: 15px;
 }
 
-.store-name,
-.store-address {
+.store-name, .store-address {
   flex: 1; /* Allows each part to expand and take equal space horizontally */
   font-weight: bold;
 }
@@ -179,5 +180,7 @@
 .compareHeading{
   align-self: center;
   font-size: xx-large;
+  color: #ffffff;
+  font-family: cursive;
 }
 
