@@ -3,7 +3,7 @@ import React from 'react';
 
 function CheckoutPage() {
     return (
-        <div className="container">
+        <div className="CheckOutContainer">
             <form action="">
                 <div className="row">
                     <div className="col">
@@ -42,8 +42,8 @@ function CheckoutPage() {
                         <h3 className="title">payment</h3>
 
                         <div className="inputBox">
-                            <span>cards accepted :</span>
-                            <img src="front-end/src/images/card_img.png" alt="" />  WHY IS IMAGE NOT FOUND -->
+                            <span>Delivery Date :</span>
+                            <input type="date" placeholder="DD/MM/YYYY"/>
                         </div>
                         <div className="inputBox">
                             <span>name on card :</span>
