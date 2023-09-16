@@ -41,7 +41,7 @@ public class PriceRepositoryImpl implements PriceRepository {
     public Collection<Price> findPricesByBarcode(String barcode) {
         try {
             Connection connection = dataSource.getConnection();
-            String priceQuery = "select * from store_price where UPPER(barcode)=?";
+            String priceQuery = "select * from store_price where UPPER(barcode)=? order by price";
             PreparedStatement stm = connection.prepareStatement(priceQuery);
             stm.setString(1, barcode.toUpperCase());
             ResultSet rs = stm.executeQuery();
