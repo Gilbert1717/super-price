@@ -70,12 +70,7 @@ public class StorePriceServiceImpl implements StorePriceService {
 
 
 
-//    public Collection<Price> SearchPriceByName(String name){
-//        return this.priceRepository.findPricesByProductName(name);
-//    }
-//    public Collection<StorePrice> SearchPriceByBarcode(String barcode){
-//        return this.priceRepository.findPricesByBarcode(barcode);
-//    }
+
 
     /**
      * return list of prices which matches the input product name
