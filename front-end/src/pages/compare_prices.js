@@ -45,7 +45,7 @@ function ComparePrices() {
                   <div className="store-address">
                     {price_product_store["store"]["address"]}
                   </div>
-                  <p className='price'>{"$" + price_product_store["price"]["price"]}</p>
+                  <p className='price'>{"$" + price_product_store["price"]["price"].toFixed(2)}</p>
                   <button className='AddToCart' onClick={() => addToCart({
                     name: price_product_store["product"]["name"],
                     store: price_product_store["store"]["name"],
