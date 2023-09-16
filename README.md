@@ -21,16 +21,15 @@
 * Github Project Board : https://github.com/orgs/cosc2299-sept-2023/projects/62/views/1
 
 	
-## Code documentation - Release 0.1.0 - date
-* feature 1
-* feature 2
-* feature 3
+## Milestone 2 Features - 17 September 2023
+* Search products
+* Browse products by category
+* Compare prices for product
   
 
 # Run Instructions
 
-Up to date instructions on how to run your project.
-
+How to run out project.
 
 # Initial Setup
 
@@ -42,16 +41,12 @@ You will need to have in your system
 - Apache Maven
 - IDE or Editor
 
-Other tools will be required to complete the project (e.g., Docker)
-
 ## Backend
 
-- Delete any unused services (i.e. backend/movies). They are there only for an initial reference.
-- Use [Spring initializr](https://start.spring.io/) to create your (micro)services
-- Place any new backend service in its own directory (i.e., backend/<service-name>)
-- Confirm you can run your applicaiton (./mvnw package && java -jar target/[microservice]-0.0.1-SNAPSHOT.jar)
+- run SuperPriceApplication.java (found in: /backend/SuperPrice/src/main/java/superPrice/)
 
 ## Frontend
-- cd into frontend/
+- cd into front-end/
 - Install dependencies "npm install"
-- Run the app with "npm run dev"
+- Install axios "npm install axios"
+- Run the app with "npm start"

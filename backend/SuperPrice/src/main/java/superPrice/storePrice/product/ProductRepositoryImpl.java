@@ -101,11 +101,10 @@ public class ProductRepositoryImpl implements ProductRepository {
     public Collection<Product> findProductByAnyCondition(String condition) {
         try {
             Connection connection = dataSource.getConnection();
-            String query = "select * from product where UPPER(name) regexp ? or barcode regexp ? or UPPER(Category) regexp ?";
+            String query = "select * from product where UPPER(name) regexp ? or barcode regexp ?";
             PreparedStatement stm = connection.prepareStatement(query);
             stm.setString(1, ".*" + condition.toUpperCase() + ".*");
             stm.setString(2, ".*" + condition + ".*");
-            stm.setString(3, ".*" + condition.toUpperCase() + ".*");
             Collection<Product> products = new ArrayList<>();
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
