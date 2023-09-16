@@ -11,15 +11,15 @@ function App() {
   return (
     <div className="App">
       <div className="background">
-          <BrowserRouter>
-          <Header />
-            <Routes>
-              <Route path="/" element={<Categories />} />
-              <Route path="/search-results/:query" element={<SearchResults />} />
-              <Route path="/category-results/:query" element={<CategoryResults />} />
-              <Route path="/compare-prices/:query" element={<ComparePrices />} />
-            </Routes>
-          </BrowserRouter>
+              <BrowserRouter>
+              <Header />
+                <Routes>
+                  <Route path="/" element={<Categories />} />
+                  <Route path="/search-results/:query" element={<SearchResults />} />
+                  <Route path="/category-results/:query" element={<CategoryResults />} />
+                  <Route path="/compare-prices/:query" element={<ComparePrices />} />
+                </Routes>
+              </BrowserRouter>
       </div>
       <Footer />
     </div>
