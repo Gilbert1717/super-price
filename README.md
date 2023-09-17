@@ -1,6 +1,3 @@
-# Web Application Boilerplate Code
-
-
 # RMIT COSC2299 SEPT Major Project
 
 # Group Information
@@ -15,6 +12,9 @@
 * Yiqi Du (s3665887)
 * Raphael Bullen (s3897844)
 
+## Links to videos 
+Links to individual videos found in docs/Milestone2/SRS_Group_06_Milestone2.docx
+
 ## Records
 
 * Github repository: https://github.com/cosc2299-sept-2023/team-project-group-p07-06.git
@@ -28,10 +28,7 @@
   
 
 # Run Instructions
-
-How to run out project.
-
-# Initial Setup
+How to run our project.
 
 ## Setup your environment 
 You will need to have in your system
@@ -42,7 +39,6 @@ You will need to have in your system
 - IDE or Editor
 
 ## Backend
-
 - run SuperPriceApplication.java (found in: /backend/SuperPrice/src/main/java/superPrice/)
 
 ## Frontend
