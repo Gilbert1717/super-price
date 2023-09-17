@@ -9,7 +9,7 @@
 * Rita Lam Cordeiro (s3947881)
 * Yash Dhukate (s3898134)
 * James Czeredys (s3900781)
-* Yiqi Du (s3665887)
+* Yiqi (Gilbert) Du (s3665887)
 * Raphael Bullen (s3897844)
 
 ## Links to videos 
@@ -44,5 +44,4 @@ You will need to have in your system
 ## Frontend
 - cd into front-end/
 - Install dependencies "npm install"
-- Install axios "npm install axios"
 - Run the app with "npm start"
