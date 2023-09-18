@@ -14,19 +14,28 @@ function CartPage() {
     const total = cartState.items.reduce((acc, item) => acc + item.price, 0);
 
     return (
-        <div className="cart-page">
-            <h2>Your Cart</h2>
-            <ul>
+        <div className="cartPage-container"> {/* Use your desired class name */}
+            <h2 className='cartPage-Heading'>Your Cart</h2>
+            <div className="cart-items"> {/* Use your desired class name */}
                 {cartState.items.map((item, index) => (
-                    <li key={index}>
-                        {item.name} - {item.store} - ${item.price}
-                        <button onClick={() => removeFromCart(index)}>Remove</button>
-                    </li>
+                    <div className="cart-item" key={index}> {/* Use your desired class name */}
+                        <div className="cart-product-name">
+                            {item.name}
+                        </div>
+                        <div className="cart-store-name">
+                            {item.store}
+                        </div>
+                        <div className="cart-store-address">
+                            {item.address}
+                        </div>
+                        <p className='cart-price'>{"$" + item.price.toFixed(2)}</p>
+                        <button className='cart-remove-button' onClick={() => removeFromCart(index)}>Remove</button>
+                    </div>
                 ))}
-            </ul>
-            <p>Total Price: ${total.toFixed(2)}</p> {/* Display the total price */}
-            <Link to="/checkout"> {/* Use Link for navigation */}
-                <button>Checkout</button>
+            </div>
+            <p className='cart-total-price'>Total Price: ${total.toFixed(2)}</p>
+            <Link to="/checkout">
+                <button className='cart-checkout-button'>Checkout</button>
             </Link>
         </div>
     );

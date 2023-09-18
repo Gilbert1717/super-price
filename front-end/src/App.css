@@ -182,6 +182,20 @@
   font-size: xx-large;
 }
 
+.AddToCart {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+}
+
+.AddToCart:hover {
+  background-color: #008000;
+}
+
 /* CheckOutPage */
 .CheckOutContainer{
   width: 100%;
@@ -286,3 +300,84 @@
   background: #12b754;
 }
 
+.cartPage-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  gap: 20px; /* Add vertical spacing between items */
+  padding: 2.5%;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between; /* Evenly space the parts horizontally */
+  align-items: center; /* Center items vertically */
+  border: 4px solid #000; /* Add a border or customize as needed */
+  padding: 10px;
+  background-color: #999999;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.cart-store-name,
+.cart-store-address {
+  flex: 1; /* Allows each part to expand and take equal space horizontally */
+  font-weight: bold;
+}
+
+.cart-product-name {
+  flex: 1; /* Allows each part to expand and take equal space horizontally */
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.cartPage-Heading {
+  align-self: center;
+  font-size: xx-large;
+}
+
+.cart-price {
+  font-size: larger;
+  color: #60ee08;
+  width: 69px;
+  padding: 1%;
+  flex: 0.25;
+}
+
+/* Style for the total price paragraph */
+.cart-total-price {
+  font-size: larger;
+  color: #60ee08;
+  margin-right: 20px; /* Add right margin for spacing */
+  text-align: right;
+}
+
+/* Style for the Checkout button */
+.cart-checkout-button {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+  float: right;
+}
+
+/* Hover effect for the Checkout button */
+.cart-checkout-button:hover {
+  background-color: #0056b3;
+}
+
+.cart-remove-button {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+}
+
+.cart-remove-button:hover {
+  background-color: #d11a2a;
+}

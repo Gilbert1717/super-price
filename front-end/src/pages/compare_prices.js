@@ -49,6 +49,7 @@ function ComparePrices() {
                   <button className='AddToCart' onClick={() => addToCart({
                     name: price_product_store["product"]["name"],
                     store: price_product_store["store"]["name"],
+                    address: price_product_store["store"]["address"],
                     price: price_product_store["price"]["price"],
                   })}>
                     Add to Cart
