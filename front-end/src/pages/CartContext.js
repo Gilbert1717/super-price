@@ -12,6 +12,8 @@ const CartContext = createContext();
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
+const CLEAR_CART = 'CLEAR_CART'; // Added action type for clearing the cart
+
 // Reducer function to update the cart state
 function cartReducer(state, action) {
     switch (action.type) {
@@ -24,6 +26,11 @@ function cartReducer(state, action) {
             return {
                 ...state,
                 items: state.items.filter((item, index) => index !== action.payload),
+            };
+        case CLEAR_CART:
+            return {
+                ...state,
+                items: [], // Clear the cart by setting items to an empty array
             };
         default:
             return state;
@@ -50,4 +57,4 @@ function useCart() {
     return context;
 }
 
-export { CartProvider, useCart, ADD_TO_CART, REMOVE_FROM_CART };
+export { CartProvider, useCart, ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART };

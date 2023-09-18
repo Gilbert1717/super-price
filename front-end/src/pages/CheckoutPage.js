@@ -1,7 +1,17 @@
 // CheckoutPage.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useCart, CLEAR_CART } from './CartContext';
 
 function CheckoutPage() {
+    const navigate = useNavigate();
+    const { dispatch } = useCart();
+
+    function goToHomePage() {
+        dispatch({ type: CLEAR_CART });
+        navigate('/'); // Navigate to the cart page
+    }
+
     return (
         <div className="CheckOutContainer">
             <form action="">
@@ -71,7 +81,7 @@ function CheckoutPage() {
                     </div>
                 </div>
 
-                <input type="submit" value="Place Order" class="submit-btn"/>
+                <input type="submit" value="Place Order" class="submit-btn" onClick={goToHomePage}/>
             </form>
         </div>
     );
