@@ -381,3 +381,13 @@
 .cart-remove-button:hover {
   background-color: #d11a2a;
 }
+
+.ViewCart {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+}
