@@ -180,6 +180,8 @@
 .compareHeading{
   align-self: center;
   font-size: xx-large;
+  font-family: cursive;
+  color: white;
 }
 
 .AddToCart {
@@ -333,6 +335,8 @@
 .cartPage-Heading {
   align-self: center;
   font-size: xx-large;
+  font-family: cursive;
+  color: white;
 }
 
 .cart-price {
