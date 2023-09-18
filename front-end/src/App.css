@@ -353,6 +353,7 @@
   color: #60ee08;
   margin-right: 20px; /* Add right margin for spacing */
   text-align: right;
+  margin-top: 20px;
 }
 
 /* Style for the Checkout button */
@@ -386,7 +387,7 @@
   background-color: #d11a2a;
 }
 
-.ViewCart {
+.ViewCart, .Profile {
   background-color: #999999;
   color: #fff;
   border: 2px solid #ffffff;
@@ -394,4 +395,36 @@
   border-radius: 5px;
   cursor: pointer;
   justify-content: right;
+}
+
+.ViewCart:hover, .Profile:hover {
+  background-color: #007BFF;
+}
+
+.delivery-and-price {
+  display: inline-block;
+  margin-left: auto; /* Push the container to the right */
+  margin-right: 0; /* Remove the right margin */
+  text-align: right; /* Align the contents to the right */
+}
+
+.delivery-label {
+  font-weight: bold; /* Make the label text bold */
+  display: inline-block; /* Display the label inline with the input */
+  margin-right: 10px; /* Add some spacing between the label and input */
+  color: white; /* Text color */
+  font-family: cursive;
+}
+
+.delivery-input {
+  padding: 5px; /* Add padding for better visual spacing */
+  border: 1px solid #ccc; /* Add a border for a clean look */
+  border-radius: 4px; /* Round the input corners */
+  font-size: 16px; /* Font size */
+}
+
+/* Add focus styles for better user experience */
+.delivery-input:focus {
+  border-color: #007BFF; /* Change border color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow on focus */
 }

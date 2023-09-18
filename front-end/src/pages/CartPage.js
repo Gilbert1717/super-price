@@ -33,11 +33,25 @@ function CartPage() {
                     </div>
                 ))}
             </div>
-            <p className='cart-total-price'>Total Price: ${total.toFixed(2)}</p>
-            <Link to="/checkout">
-                <button className='cart-checkout-button'>Checkout</button>
-            </Link>
-        </div>
+                <div className="delivery-and-price">
+                    <label htmlFor="userTime" className="delivery-label">
+                        Enter a delivery time:
+                    </label>
+                    <input
+                        type="time"
+                        id="userTime"
+                        name="userTime"
+                        min="00:00"
+                        max="23:55"
+                        step="300"
+                        className="delivery-input"
+                    />
+                    <p className='cart-total-price'>Total Price: ${total.toFixed(2)}</p>
+                </div>
+                <Link to="/checkout">
+                    <button className='cart-checkout-button'>Checkout</button>
+                </Link>
+            </div>
     );
 }
 
