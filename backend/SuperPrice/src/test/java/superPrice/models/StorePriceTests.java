@@ -2,10 +2,10 @@ package superPrice.models;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import superPrice.storePrice.StorePrice;
-import superPrice.storePrice.price.Price;
-import superPrice.storePrice.product.Product;
-import superPrice.storePrice.store.Store;
+import superPrice.storePrice.model.StorePrice;
+import superPrice.storePrice.model.Price;
+import superPrice.storePrice.model.Product;
+import superPrice.storePrice.model.Store;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;

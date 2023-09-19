@@ -1,4 +1,4 @@
-package superPrice.storePrice.product;
+package superPrice.storePrice.model;
 
 
 //import au.edu.rmit.sept.cinemas.movies.price.StorePrice;

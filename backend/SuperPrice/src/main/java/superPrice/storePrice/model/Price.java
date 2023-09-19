@@ -1,4 +1,4 @@
-package superPrice.storePrice.price;
+package superPrice.storePrice.model;
 
 public class Price {
     private String barcode;

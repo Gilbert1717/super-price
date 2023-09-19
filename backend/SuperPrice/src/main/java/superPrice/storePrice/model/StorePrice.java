@@ -1,8 +1,4 @@
-package superPrice.storePrice;
-
-import superPrice.storePrice.price.Price;
-import superPrice.storePrice.product.Product;
-import superPrice.storePrice.store.Store;
+package superPrice.storePrice.model;
 
 
 public class StorePrice {

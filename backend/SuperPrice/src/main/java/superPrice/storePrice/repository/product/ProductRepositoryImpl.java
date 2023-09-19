@@ -1,7 +1,8 @@
-package superPrice.storePrice.product;
+package superPrice.storePrice.repository.product;
 
 import org.springframework.jdbc.datasource.init.UncategorizedScriptException;
 import org.springframework.stereotype.Repository;
+import superPrice.storePrice.model.Product;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
