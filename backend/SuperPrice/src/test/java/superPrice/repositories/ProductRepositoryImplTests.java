@@ -6,9 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import superPrice.storePrice.product.Product;
-import superPrice.storePrice.product.ProductRepository;
-import superPrice.storePrice.product.ProductRepositoryImpl;
+import superPrice.storePrice.model.Product;
+import superPrice.storePrice.repository.product.ProductRepository;
+import superPrice.storePrice.repository.product.ProductRepositoryImpl;
 
 import javax.sql.DataSource;
 

@@ -1,11 +1,12 @@
-package superPrice.storePrice;
+package superPrice.storePrice.service;
 
-import superPrice.storePrice.price.Price;
-import superPrice.storePrice.price.PriceRepository;
-import superPrice.storePrice.product.Product;
-import superPrice.storePrice.product.ProductRepository;
-import superPrice.storePrice.store.Store;
-import superPrice.storePrice.store.StoreRepository;
+import superPrice.storePrice.model.Price;
+import superPrice.storePrice.model.StorePrice;
+import superPrice.storePrice.repository.price.PriceRepository;
+import superPrice.storePrice.model.Product;
+import superPrice.storePrice.repository.product.ProductRepository;
+import superPrice.storePrice.model.Store;
+import superPrice.storePrice.repository.store.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

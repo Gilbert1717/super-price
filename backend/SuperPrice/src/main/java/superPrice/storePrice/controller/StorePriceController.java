@@ -1,10 +1,12 @@
-package superPrice.storePrice;
+package superPrice.storePrice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import superPrice.storePrice.product.Product;
-import superPrice.storePrice.store.Store;
+import superPrice.storePrice.service.StorePriceService;
+import superPrice.storePrice.model.Product;
+import superPrice.storePrice.model.StorePrice;
+import superPrice.storePrice.model.Store;
 
 import java.util.Collection;
 

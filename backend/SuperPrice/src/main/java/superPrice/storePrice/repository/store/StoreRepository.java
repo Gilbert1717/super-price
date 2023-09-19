@@ -1,4 +1,6 @@
-package superPrice.storePrice.store;
+package superPrice.storePrice.repository.store;
+
+import superPrice.storePrice.model.Store;
 
 import java.util.Collection;
 

@@ -3,12 +3,12 @@ package superPrice;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import superPrice.storePrice.price.PriceRepository;
-import superPrice.storePrice.price.PriceRepositoryImpl;
-import superPrice.storePrice.product.ProductRepository;
-import superPrice.storePrice.product.ProductRepositoryImpl;
-import superPrice.storePrice.store.StoreRepository;
-import superPrice.storePrice.store.StoreRepositoryImpl;
+import superPrice.storePrice.repository.price.PriceRepository;
+import superPrice.storePrice.repository.price.PriceRepositoryImpl;
+import superPrice.storePrice.repository.product.ProductRepository;
+import superPrice.storePrice.repository.product.ProductRepositoryImpl;
+import superPrice.storePrice.repository.store.StoreRepository;
+import superPrice.storePrice.repository.store.StoreRepositoryImpl;
 
 import javax.sql.DataSource;
 
