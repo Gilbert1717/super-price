@@ -1,16 +1,24 @@
 package superPrice.orders.model;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalTime;
 
 public class Order {
 
     private long id;
-    private LocalTime creatingTime;
-    private LocalTime deliverTime;
+    private Timestamp creatingTime;
+    private Timestamp deliverTime;
     private String deliveryAddress;
-    public Order(int id, LocalTime creatingTime, LocalTime deliverTime, String deliveryAddress) {
+
+    public Order(long id, Timestamp creatingTime, Timestamp deliverTime, String deliveryAddress) {
         this.id = id;
         this.creatingTime = creatingTime;
+        this.deliverTime = deliverTime;
+        this.deliveryAddress = deliveryAddress;
+    }
+
+    public Order(Timestamp deliverTime, String deliveryAddress) {
         this.deliverTime = deliverTime;
         this.deliveryAddress = deliveryAddress;
     }
@@ -19,11 +27,11 @@ public class Order {
         return id;
     }
 
-    public LocalTime getCreatingTime() {
+    public Timestamp getCreatingTime() {
         return creatingTime;
     }
 
-    public LocalTime getDeliverTime() {
+    public Timestamp getDeliverTime() {
         return deliverTime;
     }
 
@@ -31,7 +39,7 @@ public class Order {
         return deliveryAddress;
     }
 
-    public void setDeliverTime(LocalTime deliverTime) {
+    public void setDeliverTime(Timestamp deliverTime) {
         this.deliverTime = deliverTime;
     }
 

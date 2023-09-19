@@ -1,4 +1,7 @@
 package superPrice.orders.repository;
 
-public class OrderRepository {
+import superPrice.orders.model.Order;
+
+public interface OrderRepository {
+    Order create(Order order);
 }

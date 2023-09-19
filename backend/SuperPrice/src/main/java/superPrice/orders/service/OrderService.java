@@ -1,4 +1,10 @@
 package superPrice.orders.service;
 
-public class OrderService {
+import superPrice.orders.model.Order;
+import superPrice.orders.model.OrderDTO;
+
+import javax.naming.directory.InvalidAttributesException;
+
+public interface OrderService {
+    Order creatingOrder(OrderDTO order) throws InvalidAttributesException;
 }
