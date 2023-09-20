@@ -17,7 +17,7 @@ function CheckoutPage() {
             <form action="">
                 <div className="row">
                     <div className="col">
-                        <h3 className="title">billing address</h3>
+                        <h3 className="title">Personal Details</h3>
 
                         <div className="inputBox">
                             <span>full name :</span>
@@ -52,9 +52,10 @@ function CheckoutPage() {
                         <h3 className="title">payment</h3>
 
                         <div className="inputBox">
-                            <span>Delivery Date :</span>
+                            <span>Discount Code :</span>
                             <input type="date" placeholder="DD/MM/YYYY"/>
                         </div>
+
                         <div className="inputBox">
                             <span>name on card :</span>
                             <input type="text" placeholder="Mr. Steve Smith" />

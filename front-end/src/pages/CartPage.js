@@ -14,13 +14,20 @@ function CartPage() {
     // Calculate the total price of items in the cart
     const baseTotal = cartState.items.reduce((acc, item) => acc + item.price, 0);
 
-    // Calculate the total price with the delivery cost
-    const total = deliveryType === 'Express' ? baseTotal + 10 : baseTotal;
+    // Calculate the shipping cost based on the delivery type
+    const shippingCost = deliveryType === 'Express' ? 30 : 10;
+
+    // Calculate the subtotal (total price of items) and the final total (subtotal + shipping)
+    const subtotal = baseTotal;
+    const total = subtotal + shippingCost;
 
     // Handle the change in delivery type
     function handleDeliveryTypeChange(event) {
         setDeliveryType(event.target.value);
     }
+
+    // Check if the cart is empty
+    const isCartEmpty = cartState.items.length === 0;
 
     return (
         <div className="cartPage-container">
@@ -71,11 +78,16 @@ function CartPage() {
                     <option value="Express">Express</option>
                 </select>
 
-                <p className="cart-total-price">Total Price: ${total.toFixed(2)}</p>
+                <p className="cart-total-price">Subtotal: ${subtotal.toFixed(2)}</p>
+                <p className="cart-total-price">Shipping: ${shippingCost.toFixed(2)}</p>
+                <p className="cart-total-price">Total: ${total.toFixed(2)}</p>
             </div>
-            <Link to="/checkout">
-                <button className="cart-checkout-button">Checkout</button>
-            </Link>
+            {!isCartEmpty && (
+                <Link to="/checkout">
+                    <button className="cart-checkout-button">Checkout</button>
+                </Link>
+            )}
+            {isCartEmpty && <p className="cart-checkout-error">Your cart is currently empty.</p>}
         </div>
     );
 }

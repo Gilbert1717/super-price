@@ -351,7 +351,7 @@
 .cart-total-price {
   font-size: larger;
   color: #60ee08;
-  margin-right: 20px; /* Add right margin for spacing */
+  margin-right: 5px; /* Add right margin for spacing */
   text-align: right;
   margin-top: 20px;
 }
@@ -371,6 +371,17 @@
 /* Hover effect for the Checkout button */
 .cart-checkout-button:hover {
   background-color: #0056b3;
+}
+
+.cart-checkout-error {
+  color: #d11a2a;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 .cart-remove-button {
