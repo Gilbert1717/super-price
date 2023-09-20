@@ -53,7 +53,7 @@ function CheckoutPage() {
 
                         <div className="inputBox">
                             <span>Discount Code :</span>
-                            <input type="date" placeholder="DD/MM/YYYY"/>
+                            <input type="text"/>
                         </div>
 
                         <div className="inputBox">
