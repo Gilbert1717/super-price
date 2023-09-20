@@ -414,6 +414,11 @@
   margin-right: 10px; /* Add some spacing between the label and input */
   color: white; /* Text color */
   font-family: cursive;
+  margin-inline: 30px;
+}
+
+.delivery-label::placeholder {
+  text-transform: uppercase;
 }
 
 .delivery-input {
