@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 
 function CartPage() {
     const { cartState, dispatch } = useCart();
-    const [deliveryType, setDeliveryType] = useState('Regular'); // Default delivery type is 'Regular'
+    const [deliveryType, setDeliveryType] = useState('Regular');
+    const [userTime, setUserTime] = useState('');
+    const [userDate, setUserDate] = useState('');
+    const [isDeliveryInputValid, setIsDeliveryInputValid] = useState(false);
 
     // Function to remove an item from the cart
     function removeFromCart(index) {
@@ -26,68 +29,104 @@ function CartPage() {
         setDeliveryType(event.target.value);
     }
 
+    // Handle the change in delivery time
+    function handleUserTimeChange(event) {
+        setUserTime(event.target.value);
+        validateDeliveryInputs();
+    }
+
+    // Handle the change in delivery date
+    function handleUserDateChange(event) {
+        setUserDate(event.target.value);
+        validateDeliveryInputs();
+    }
+
+    // Validate delivery inputs
+    function validateDeliveryInputs() {
+        if (userTime && userDate && deliveryType) {
+            setIsDeliveryInputValid(true);
+        } else {
+            setIsDeliveryInputValid(false);
+        }
+    }
+
     // Check if the cart is empty
     const isCartEmpty = cartState.items.length === 0;
 
     return (
         <div className="cartPage-container">
             <h2 className="cartPage-Heading">Your Cart</h2>
-            <div className="cart-items">
-                {cartState.items.map((item, index) => (
-                    <div className="cart-item" key={index}>
-                        <div className="cart-product-name">{item.name}</div>
-                        <div className="cart-store-name">{item.store}</div>
-                        <div className="cart-store-address">{item.address}</div>
-                        <p className="cart-price">{"$" + item.price.toFixed(2)}</p>
-                        <button className="cart-remove-button" onClick={() => removeFromCart(index)}>
-                            Remove
-                        </button>
+            {isCartEmpty ? (
+                <p className="cart-checkout-error">is empty.</p>
+            ) : (
+                <>
+                    <div className="cart-items">
+                        {cartState.items.map((item, index) => (
+                            <div className="cart-item" key={index}>
+                                <div className="cart-product-name">{item.name}</div>
+                                <div className="cart-store-name">{item.store}</div>
+                                <div className="cart-store-address">{item.address}</div>
+                                <p className="cart-price">{"$" + item.price.toFixed(2)}</p>
+                                <button className="cart-remove-button" onClick={() => removeFromCart(index)}>
+                                    Remove
+                                </button>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-            <div className="delivery-and-price">
-                <label htmlFor="userTime" className="delivery-label">
-                    Enter a delivery time:
-                </label>
-                <input
-                    type="time"
-                    id="userTime"
-                    name="userTime"
-                    min="00:00"
-                    max="23:55"
-                    step="300"
-                    className="delivery-input"
-                />
+                    <div className="delivery-and-price">
+                        <label htmlFor="userTime" className="delivery-label">
+                            Enter a delivery time:
+                        </label>
+                        <input
+                            type="time"
+                            id="userTime"
+                            name="userTime"
+                            min="00:00"
+                            max="23:55"
+                            step="300"
+                            className="delivery-input"
+                            value={userTime}
+                            onChange={handleUserTimeChange}
+                        />
 
-                <label htmlFor="userDate" className="delivery-label">
-                    Enter a delivery date:
-                </label>
-                <input type="date" id="userDate" className="delivery-input" />
+                        <label htmlFor="userDate" className="delivery-label">
+                            Enter a delivery date:
+                        </label>
+                        <input
+                            type="date"
+                            id="userDate"
+                            className="delivery-input"
+                            value={userDate}
+                            onChange={handleUserDateChange}
+                        />
 
-                <label htmlFor="deliveryType" className="delivery-label">
-                    Choose a Delivery Type:
-                </label>
-                <select
-                    name="deliveryType"
-                    id="dType"
-                    className="delivery-input"
-                    value={deliveryType}
-                    onChange={handleDeliveryTypeChange}
-                >
-                    <option value="Regular">Regular</option>
-                    <option value="Express">Express</option>
-                </select>
+                        <label htmlFor="deliveryType" className="delivery-label">
+                            Choose a Delivery Type:
+                        </label>
+                        <select
+                            name="deliveryType"
+                            id="dType"
+                            className="delivery-input"
+                            value={deliveryType}
+                            onChange={handleDeliveryTypeChange}
+                        >
+                            <option value="Regular">Regular</option>
+                            <option value="Express">Express</option>
+                        </select>
 
-                <p className="cart-total-price">Subtotal: ${subtotal.toFixed(2)}</p>
-                <p className="cart-total-price">Shipping: ${shippingCost.toFixed(2)}</p>
-                <p className="cart-total-price">Total: ${total.toFixed(2)}</p>
-            </div>
-            {!isCartEmpty && (
-                <Link to="/checkout">
-                    <button className="cart-checkout-button">Checkout</button>
-                </Link>
+                        <p className="cart-total-price">Subtotal: ${subtotal.toFixed(2)}</p>
+                        <p className="cart-total-price">Shipping: ${shippingCost.toFixed(2)}</p>
+                        <p className="cart-total-price">Total: ${total.toFixed(2)}</p>
+                    </div>
+                    {isDeliveryInputValid ? (
+                        <Link to="/checkout">
+                            <button className="cart-checkout-button">Checkout</button>
+                        </Link>
+                    ) : (
+                        <p className="cart-checkout-error">Please enter delivery details.</p>
+                    )}
+                </>
             )}
-            {isCartEmpty && <p className="cart-checkout-error">Your cart is currently empty.</p>}
         </div>
     );
 }
