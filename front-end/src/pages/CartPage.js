@@ -43,7 +43,7 @@ function CartPage() {
 
     // Validate delivery inputs
     function validateDeliveryInputs() {
-        if (userTime && userDate && deliveryType) {
+        if (userTime || userDate) {
             setIsDeliveryInputValid(true);
         } else {
             setIsDeliveryInputValid(false);
@@ -57,7 +57,7 @@ function CartPage() {
         <div className="cartPage-container">
             <h2 className="cartPage-Heading">Your Cart</h2>
             {isCartEmpty ? (
-                <p className="cart-checkout-error">is empty.</p>
+                <p className="cart-checkout-error">Your cart is empty.</p>
             ) : (
                 <>
                     <div className="cart-items">
