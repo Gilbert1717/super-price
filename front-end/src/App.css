@@ -166,6 +166,28 @@
   border-radius: 15px;
 }
 
+.compare-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: row; /* Stack items vertically */
+}
+
+.compareHeading {
+  display: inline-block; /* Ensure the heading takes only the necessary width */
+  text-align: center;
+  margin-inline: 100px;
+}
+
+.sorting-Feature {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+}
+
 .store-name,
 .store-address {
   flex: 1; /* Allows each part to expand and take equal space horizontally */
@@ -408,7 +430,7 @@
   justify-content: right;
 }
 
-.ViewCart:hover, .Profile:hover {
+.ViewCart:hover, .Profile:hover, .sorting-Feature:hover {
   background-color: #007BFF;
 }
 
