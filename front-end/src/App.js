@@ -5,12 +5,16 @@ import SearchResults from './pages/search_results';
 import CategoryResults from './pages/category_result';
 import ComparePrices from './pages/compare_prices';
 import Header from './elements/header';
+import CartPage from './pages/CartPage'; // Import the CartPage component
+import { CartProvider } from './pages/CartContext'; // Import the CartProvider
+import CheckoutPage from './pages/CheckoutPage'; // Import the CheckoutPage component
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <div className="background">
+          <CartProvider>
               <BrowserRouter>
               <Header />
                 <Routes>
@@ -18,8 +22,11 @@ function App() {
                   <Route path="/search-results/:query" element={<SearchResults />} />
                   <Route path="/category-results/:query" element={<CategoryResults />} />
                   <Route path="/compare-prices/:query" element={<ComparePrices />} />
+                  <Route path="/cart" element={<CartPage />} /> {/* Add the route for the cart page */}
+                  <Route path="/checkout" element={<CheckoutPage />} /> {/* Add the route for the checkout page */}
                 </Routes>
               </BrowserRouter>
+          </CartProvider>
       </div>
       <Footer />
     </div>
@@ -27,3 +34,4 @@ function App() {
 }
 
 export default App;
+ 
