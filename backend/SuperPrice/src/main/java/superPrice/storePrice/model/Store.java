@@ -1,4 +1,4 @@
-package superPrice.storePrice.store;
+package superPrice.storePrice.model;
 
 public class Store {
 

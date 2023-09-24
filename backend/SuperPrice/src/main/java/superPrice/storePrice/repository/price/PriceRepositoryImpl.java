@@ -1,7 +1,8 @@
-package superPrice.storePrice.price;
+package superPrice.storePrice.repository.price;
 
 import org.springframework.jdbc.datasource.init.UncategorizedScriptException;
 import org.springframework.stereotype.Repository;
+import superPrice.storePrice.model.Price;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -41,7 +42,7 @@ public class PriceRepositoryImpl implements PriceRepository {
     public Collection<Price> findPricesByBarcode(String barcode) {
         try {
             Connection connection = dataSource.getConnection();
-            String priceQuery = "select * from store_price where UPPER(barcode)=?";
+            String priceQuery = "select * from store_price where UPPER(barcode)=? ORDER BY price";
             PreparedStatement stm = connection.prepareStatement(priceQuery);
             stm.setString(1, barcode.toUpperCase());
             ResultSet rs = stm.executeQuery();

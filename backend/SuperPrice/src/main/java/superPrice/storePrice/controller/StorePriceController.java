@@ -1,13 +1,12 @@
-package superPrice.storePrice;
+package superPrice.storePrice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import superPrice.storePrice.product.Product;
-import superPrice.storePrice.store.Store;
+import org.springframework.web.bind.annotation.*;
+
+import superPrice.storePrice.service.StorePriceService;
+import superPrice.storePrice.model.Product;
+import superPrice.storePrice.model.StorePrice;
+import superPrice.storePrice.model.Store;
 
 import java.util.Collection;
 

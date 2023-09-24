@@ -1,7 +1,7 @@
 package superPrice.models;
 
 import org.junit.jupiter.api.Test;
-import superPrice.storePrice.product.Product;
+import superPrice.storePrice.model.Product;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;

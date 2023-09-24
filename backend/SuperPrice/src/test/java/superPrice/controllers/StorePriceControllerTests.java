@@ -3,17 +3,14 @@ package superPrice.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import superPrice.storePrice.StorePrice;
-import superPrice.storePrice.StorePriceController;
-import superPrice.storePrice.StorePriceService;
-import superPrice.storePrice.price.Price;
-import superPrice.storePrice.product.Product;
-import superPrice.storePrice.store.Store;
+import superPrice.storePrice.model.StorePrice;
+import superPrice.storePrice.controller.StorePriceController;
+import superPrice.storePrice.service.StorePriceService;
+import superPrice.storePrice.model.Price;
+import superPrice.storePrice.model.Product;
+import superPrice.storePrice.model.Store;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

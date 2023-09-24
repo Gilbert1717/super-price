@@ -33,10 +33,6 @@ function ComparePrices() {
     getSearch(query);
   }, [query, sortOrder])
 
-  // Function to add an item to the cart
-  function addToCart(item) {
-    dispatch({ type: ADD_TO_CART, payload: item });
-  }
 
   // Function to handle sorting order change
   function handleSortOrderChange(event) {

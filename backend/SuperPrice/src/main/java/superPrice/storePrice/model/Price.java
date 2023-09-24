@@ -1,11 +1,8 @@
-package superPrice.storePrice.price;
+package superPrice.storePrice.model;
 
 public class Price {
     private String barcode;
     private int storeid;
-    // private String storeName;
-    // private String storePostcode;
-    // private String productName;
     private double price;
     private String status;
 

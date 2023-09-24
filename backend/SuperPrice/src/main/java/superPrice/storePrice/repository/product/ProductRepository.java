@@ -1,5 +1,7 @@
-package superPrice.storePrice.product;
+package superPrice.storePrice.repository.product;
 
+
+import superPrice.storePrice.model.Product;
 
 import java.util.Collection;
 

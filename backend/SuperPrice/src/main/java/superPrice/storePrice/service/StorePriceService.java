@@ -1,7 +1,8 @@
-package superPrice.storePrice;
+package superPrice.storePrice.service;
 
-import superPrice.storePrice.product.Product;
-import superPrice.storePrice.store.Store;
+import superPrice.storePrice.model.Product;
+import superPrice.storePrice.model.StorePrice;
+import superPrice.storePrice.model.Store;
 
 import java.util.Collection;
 
