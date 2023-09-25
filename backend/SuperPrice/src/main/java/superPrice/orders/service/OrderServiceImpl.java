@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService{
 
             // Convert the Date to a java.sql.Timestamp
             Timestamp timestamp = new Timestamp(parsedDate.getTime());
-            return new Order(timestamp,order.getDeliveryAddress());
+            return new Order(timestamp,order.getDeliveryAddress(),order.getDeliveryType());
         } catch (Exception e) {
             throw new InvalidAttributesException("invalid delivery date");
         }

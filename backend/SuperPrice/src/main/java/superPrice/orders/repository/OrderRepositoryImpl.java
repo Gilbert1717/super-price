@@ -22,7 +22,7 @@ public class OrderRepositoryImpl implements OrderRepository{
     public Order createOrder(Order order) {
         try {
             PreparedStatement stm = this.dataSource.getConnection().prepareStatement(
-                    "INSERT INTO orders (creating_time,delivery_time,delivery_address) VALUES (?, ?, ?)",
+                    "INSERT INTO orders (creating_time,delivery_time,delivery_address,delivery_type) VALUES (?, ?, ?,?)",
                     Statement.RETURN_GENERATED_KEYS);
             Instant utcNow = Instant.now();
             Timestamp timestamp = Timestamp.from(utcNow);
@@ -30,6 +30,7 @@ public class OrderRepositoryImpl implements OrderRepository{
             stm.setTimestamp(1, timestamp);
             stm.setTimestamp(2, order.getDeliverTime());
             stm.setString(3, order.getDeliveryAddress());
+            stm.setString(4, order.getDeliveryType());
             int row = stm.executeUpdate();
 
             if (row == 0) {
@@ -39,7 +40,7 @@ public class OrderRepositoryImpl implements OrderRepository{
             ResultSet generatedKeys = stm.getGeneratedKeys();
             if (generatedKeys.next()) {
                 Long id = generatedKeys.getLong(1);
-                return new Order(id, timestamp, order.getDeliverTime(),order.getDeliveryAddress());
+                return new Order(id, timestamp, order.getDeliverTime(),order.getDeliveryAddress(),order.getDeliveryType());
             } else {
                 throw new SQLException("Creating order failed, no ID obtained.");
             }
