@@ -1,31 +1,29 @@
 package superPrice.orders.service;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import superPrice.orders.model.Order;
-import superPrice.orders.model.OrderDTO;
+import superPrice.orders.model.DTO.NewOrderRequest;
+import superPrice.orders.model.OrderItem;
+import superPrice.orders.model.DTO.NewOrderResponse;
 import superPrice.orders.repository.OrderRepository;
-import superPrice.storePrice.repository.price.PriceRepository;
 
 import javax.naming.directory.InvalidAttributesException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
+import java.util.Collection;
 import java.util.Date;
 
 @Service
 public class OrderServiceImpl implements OrderService{
     @Autowired
     private OrderRepository orderRepository;
-    public Order creatingOrder(OrderDTO order) throws InvalidAttributesException {
+    public NewOrderResponse creatingOrder(NewOrderRequest order, Collection<OrderItem> orderItems) throws InvalidAttributesException {
         Order o = orderDTOConverter(order);
-//        orderRepository.create()
-        return o;
+        return orderRepository.createOrderAndItems(o,orderItems);
     }
 
-    private Order orderDTOConverter(OrderDTO order) throws InvalidAttributesException {
+    private Order orderDTOConverter(NewOrderRequest order) throws InvalidAttributesException {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 

@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import superPrice.orders.model.Order;
-import superPrice.orders.model.OrderDTO;
+import superPrice.orders.model.DTO.NewOrderRequest;
+import superPrice.orders.model.DTO.NewOrderResponse;
 import superPrice.orders.service.OrderService;
-import superPrice.storePrice.service.StorePriceService;
 
 import javax.naming.directory.InvalidAttributesException;
 
@@ -22,10 +21,10 @@ public class OrderController {
         this.service = orderService;
     }
     @PostMapping
-    public ResponseEntity newOrder(@RequestBody OrderDTO order) {
+    public ResponseEntity newOrder(@RequestBody NewOrderRequest order) {
         try {
-            Order o = service.creatingOrder(order);
-            return new ResponseEntity<Order>(o, HttpStatus.CREATED);
+            NewOrderResponse o = service.creatingOrder(order,order.getOrderItems());
+            return new ResponseEntity<>(o, HttpStatus.CREATED);
         }
         catch(InvalidAttributesException e) {
             return ResponseEntity

@@ -1,12 +1,15 @@
-package superPrice.orders.model;
+package superPrice.orders.model.DTO;
+
+import superPrice.orders.model.Order;
+import superPrice.orders.model.OrderItem;
 
 import java.util.Collection;
 
-public class OrderItemDTO {
+public class NewOrderResponse {
     private Collection<OrderItem> orderItems;
     private Order order;
 
-    public OrderItemDTO(Collection<OrderItem> orderItems, Order order) {
+    public NewOrderResponse(Collection<OrderItem> orderItems, Order order) {
         this.orderItems = orderItems;
         this.order = order;
     }

@@ -3,7 +3,7 @@ package superPrice.orders.repository;
 import org.springframework.stereotype.Repository;
 import superPrice.orders.model.Order;
 import superPrice.orders.model.OrderItem;
-import superPrice.orders.model.OrderItemDTO;
+import superPrice.orders.model.DTO.NewOrderResponse;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -49,7 +49,7 @@ public class OrderRepositoryImpl implements OrderRepository{
     }
 
 
-    public OrderItemDTO createOrderAndItems(Collection<OrderItem> orderItems, Order order) {
+    public NewOrderResponse createOrderAndItems(Order order, Collection<OrderItem> orderItems) {
         //Create order first in orders table
         Order o = createOrder(order);
         try {
@@ -63,7 +63,7 @@ public class OrderRepositoryImpl implements OrderRepository{
                 stm.setLong(1, o.getId());
                 stm.setString(2, orderItem.getBarcode());
                 stm.setInt(3, orderItem.getStoreId());
-                stm.setInt(3, orderItem.getQuantity());
+                stm.setInt(4, orderItem.getQuantity());
                 int row = stm.executeUpdate();
 
                 if (row == 0) {
@@ -71,7 +71,7 @@ public class OrderRepositoryImpl implements OrderRepository{
                 }
                 ois.add(new OrderItem(order.getId(),orderItem.getBarcode(),orderItem.getStoreId(), orderItem.getQuantity()));
             }
-            return new OrderItemDTO(ois,o);
+            return new NewOrderResponse(ois,o);
 
         } catch (SQLException e) {
             deleteOrderByOrderId(o.getId());
