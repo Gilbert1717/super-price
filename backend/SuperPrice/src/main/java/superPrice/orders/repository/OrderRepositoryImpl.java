@@ -68,9 +68,9 @@ public class OrderRepositoryImpl implements OrderRepository{
                 int row = stm.executeUpdate();
 
                 if (row == 0) {
-                    throw new SQLException("Failed to create order = " + order.getId());
+                    throw new SQLException("Failed to create order = " + o.getId());
                 }
-                ois.add(new OrderItem(order.getId(),orderItem.getBarcode(),orderItem.getStoreId(), orderItem.getQuantity()));
+                ois.add(new OrderItem(o.getId(),orderItem.getBarcode(),orderItem.getStoreId(), orderItem.getQuantity()));
             }
             return new NewOrderResponse(ois,o);
 
