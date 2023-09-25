@@ -2,10 +2,14 @@ package superPrice.orders.repository;
 
 import org.springframework.stereotype.Repository;
 import superPrice.orders.model.Order;
+import superPrice.orders.model.OrderItem;
+import superPrice.orders.model.OrderItemDTO;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Repository
 public class OrderRepositoryImpl implements OrderRepository{
@@ -15,7 +19,7 @@ public class OrderRepositoryImpl implements OrderRepository{
         this.dataSource = dataSource;
     }
     @Override
-    public Order create(Order order) {
+    public Order createOrder(Order order) {
         try {
             PreparedStatement stm = this.dataSource.getConnection().prepareStatement(
                     "INSERT INTO orders (creating_time,delivery_time,delivery_address) VALUES (?, ?, ?)",
@@ -43,4 +47,56 @@ public class OrderRepositoryImpl implements OrderRepository{
             throw new RuntimeException("Error in creating order", e);
         }
     }
+
+
+    public OrderItemDTO createOrderAndItems(Collection<OrderItem> orderItems, Order order) {
+        //Create order first in orders table
+        Order o = createOrder(order);
+        try {
+            //Create items in the order in orders_item relation table
+            Collection<OrderItem> ois = new ArrayList<>();
+            for (OrderItem orderItem:orderItems){
+                PreparedStatement stm = this.dataSource.getConnection().prepareStatement(
+                        "INSERT INTO order_product_store (order_id,barcode,store_id,quantity) VALUES (?, ?, ?,?)",
+                        Statement.RETURN_GENERATED_KEYS);
+
+                stm.setLong(1, o.getId());
+                stm.setString(2, orderItem.getBarcode());
+                stm.setInt(3, orderItem.getStoreId());
+                stm.setInt(3, orderItem.getQuantity());
+                int row = stm.executeUpdate();
+
+                if (row == 0) {
+                    throw new SQLException("Failed to create order = " + order.getId());
+                }
+                ois.add(new OrderItem(order.getId(),orderItem.getBarcode(),orderItem.getStoreId(), orderItem.getQuantity()));
+            }
+            return new OrderItemDTO(ois,o);
+
+        } catch (SQLException e) {
+            deleteOrderByOrderId(o.getId());
+            throw new RuntimeException("Error in creating order", e);
+        }
+    }
+
+    @Override
+    public void deleteOrderByOrderId(long order_id) {
+        try {
+            PreparedStatement stm = this.dataSource.getConnection().prepareStatement(
+                    "DELETE FROM orders WHERE id=?", Statement.RETURN_GENERATED_KEYS);
+
+            stm.setLong(1, order_id);
+
+            int row = stm.executeUpdate();
+
+            if (row == 0) {
+                throw new SQLException("Failed to delete Order ID = " + order_id);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error in create", e);
+        }
+    }
+
+
 }

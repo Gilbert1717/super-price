@@ -7,8 +7,8 @@ CREATE TABLE product
     PRIMARY KEY (barcode)
 );
 
-DROP TABLE if exists Store;
-CREATE TABLE Store
+DROP TABLE if exists store;
+CREATE TABLE store
 (
     store_id int NOT NULL,
     name     varchar(45)  DEFAULT NULL,
@@ -25,5 +25,7 @@ CREATE TABLE store_price
     store_id int         NOT NULL,
     price    double      NOT NULL,
     status   varchar(20) NOT NULL,
+    FOREIGN KEY (barcode) REFERENCES product(barcode),
+    FOREIGN KEY (store_id) REFERENCES store(store_id),
     PRIMARY KEY (barcode, store_id)
 );

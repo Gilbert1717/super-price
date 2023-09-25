@@ -7,4 +7,6 @@ import javax.naming.directory.InvalidAttributesException;
 
 public interface OrderService {
     Order creatingOrder(OrderDTO order) throws InvalidAttributesException;
+
+    void deleteOrder(Order order);
 }

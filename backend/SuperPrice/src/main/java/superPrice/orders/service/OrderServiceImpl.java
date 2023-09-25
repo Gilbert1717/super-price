@@ -18,10 +18,11 @@ import java.util.Date;
 @Service
 public class OrderServiceImpl implements OrderService{
     @Autowired
-    private OrderRepository orderRepositoryImpl;
+    private OrderRepository orderRepository;
     public Order creatingOrder(OrderDTO order) throws InvalidAttributesException {
         Order o = orderDTOConverter(order);
-        return orderRepositoryImpl.create(o);
+//        orderRepository.create()
+        return o;
     }
 
     private Order orderDTOConverter(OrderDTO order) throws InvalidAttributesException {
@@ -37,5 +38,9 @@ public class OrderServiceImpl implements OrderService{
         } catch (Exception e) {
             throw new InvalidAttributesException("invalid delivery date");
         }
+    }
+
+    public void deleteOrder(Order order) {
+        orderRepository.deleteOrderByOrderId(order.getId());
     }
 }
