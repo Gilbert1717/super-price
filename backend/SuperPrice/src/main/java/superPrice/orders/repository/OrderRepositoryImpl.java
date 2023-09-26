@@ -5,6 +5,7 @@ import superPrice.orders.model.Order;
 import superPrice.orders.model.OrderItem;
 import superPrice.orders.model.DTO.NewOrderResponse;
 
+import javax.naming.directory.InvalidAttributesException;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.time.Instant;
@@ -19,7 +20,7 @@ public class OrderRepositoryImpl implements OrderRepository{
         this.dataSource = dataSource;
     }
     @Override
-    public Order createOrder(Order order) {
+    public Order createOrder(Order order) throws InvalidAttributesException {
         try {
             PreparedStatement stm = this.dataSource.getConnection().prepareStatement(
                     "INSERT INTO orders (creating_time,delivery_time,delivery_address,delivery_type) VALUES (?, ?, ?,?)",
@@ -45,12 +46,12 @@ public class OrderRepositoryImpl implements OrderRepository{
                 throw new SQLException("Creating order failed, no ID obtained.");
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Error in creating order", e);
+            throw new InvalidAttributesException("Error in creating order");
         }
     }
 
 
-    public NewOrderResponse createOrderAndItems(Order order, Collection<OrderItem> orderItems) {
+    public NewOrderResponse createOrderAndItems(Order order, Collection<OrderItem> orderItems) throws InvalidAttributesException {
         //Create order first in orders table
         Order o = createOrder(order);
         try {
@@ -65,10 +66,10 @@ public class OrderRepositoryImpl implements OrderRepository{
                 stm.setString(2, orderItem.getBarcode());
                 stm.setInt(3, orderItem.getStoreId());
                 stm.setInt(4, orderItem.getQuantity());
-                int row = stm.executeUpdate();
 
+                int row = stm.executeUpdate();
                 if (row == 0) {
-                    throw new SQLException("Failed to create order = " + o.getId());
+                    throw new InvalidAttributesException("Failed to add item to order = " + o.getId());
                 }
                 ois.add(new OrderItem(o.getId(),orderItem.getBarcode(),orderItem.getStoreId(), orderItem.getQuantity()));
             }
@@ -76,7 +77,7 @@ public class OrderRepositoryImpl implements OrderRepository{
 
         } catch (SQLException e) {
             deleteOrderByOrderId(o.getId());
-            throw new RuntimeException("Error in creating order", e);
+            throw new InvalidAttributesException("Error in creating order, wrong item information provided");
         }
     }
 

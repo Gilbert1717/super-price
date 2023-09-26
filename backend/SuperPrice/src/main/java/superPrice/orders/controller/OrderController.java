@@ -26,11 +26,10 @@ public class OrderController {
             NewOrderResponse o = service.creatingOrder(order,order.getOrderItems());
             return new ResponseEntity<>(o, HttpStatus.CREATED);
         }
-        catch(InvalidAttributesException e) {
+        catch(Exception e) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
-                    .body("Invalid delivery time");
+                    .body(e.getMessage());
         }
-
     }
 }
