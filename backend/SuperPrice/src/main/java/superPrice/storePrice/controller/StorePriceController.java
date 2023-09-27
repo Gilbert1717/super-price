@@ -26,6 +26,11 @@ public class StorePriceController {
         return this.service.findProductByCategory(category);
     }
 
+    @GetMapping(value = "ten")
+    public Collection<StorePrice> findTen() {
+        return this.service.findTenSpecials();
+    }
+
     @GetMapping(value = "product")
     public Collection<Product> findAllProducts() {
         return this.service.findAllProducts();

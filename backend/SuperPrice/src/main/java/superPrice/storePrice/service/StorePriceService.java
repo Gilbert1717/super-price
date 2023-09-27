@@ -1,5 +1,6 @@
 package superPrice.storePrice.service;
 
+import superPrice.storePrice.model.Price;
 import superPrice.storePrice.model.Product;
 import superPrice.storePrice.model.StorePrice;
 import superPrice.storePrice.model.Store;
@@ -23,6 +24,8 @@ public interface StorePriceService {
     Product findProductByBarcode(String barcode);
 
     Collection<Product> findAllProducts();
+
+    Collection<StorePrice> findTenSpecials();
 
     Collection<Product> findProductByName(String name);
 
