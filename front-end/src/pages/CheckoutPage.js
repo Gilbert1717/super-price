@@ -2,12 +2,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart, CLEAR_CART } from './CartContext';
+import creditCard from "../images/CreditCard.png";
 
 function CheckoutPage() {
     const navigate = useNavigate();
     const { dispatch } = useCart();
 
     function goToHomePage() {
+        
         dispatch({ type: CLEAR_CART });
         navigate('/'); // Navigate to the cart page
     }
@@ -43,7 +45,7 @@ function CheckoutPage() {
                             </div>
                             <div className="inputBox">
                                 <span>zip code :</span>
-                                <input type="text" placeholder="123 456" />
+                                <input type="text" placeholder="1234" />
                             </div>
                         </div>
                     </div>
@@ -51,9 +53,9 @@ function CheckoutPage() {
                     <div className="col">
                         <h3 className="title">payment</h3>
 
-                        <div className="inputBox">
-                            <span>Discount Code :</span>
-                            <input type="text"/>
+                        <div className='inputBox'>
+                            <span>Accepted Cards :</span>
+                            <img src={creditCard} alt="credit cards" className='creditCardImg'/>
                         </div>
 
                         <div className="inputBox">
