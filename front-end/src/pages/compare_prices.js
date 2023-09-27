@@ -10,8 +10,8 @@ function ComparePrices() {
   useEffect(() => {
     async function getSearch(product_name) {
         if (product_name){
-          const response = await axios.get(`http://localhost:8080/price/storePrice/${query}`);
-          console.log(response)
+          console.log(`${process.env.REACT_APP_API_URL}/price/storePrice/${query}`)
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/price/storePrice/${query}`);
           if (!response.data) {
             setData(null);
           } else{
