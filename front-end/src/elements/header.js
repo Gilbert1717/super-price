@@ -42,9 +42,6 @@ function Header() {
           <div>
               <button className="ViewCart" onClick={goToCart}>View Cart</button>
           </div>
-          <div>
-              <button className="Profile">User Profile</button>
-          </div>
       </div>
   );
 }
