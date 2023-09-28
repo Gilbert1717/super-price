@@ -12,7 +12,8 @@ function CategoryResults() {
   useEffect(() => {
     async function getSearch(product_name) {
         if (product_name){
-          const response = await axios.get(`http://localhost:8080/price/product/category:${query}`);
+          console.log(`${process.env.REACT_APP_API_URL}/price/product/category:${query}`)
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/price/product/category:${query}`);
           console.log(response)
           if (!response.data) {
             setData(null);

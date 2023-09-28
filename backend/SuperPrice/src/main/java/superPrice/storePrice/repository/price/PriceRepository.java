@@ -12,6 +12,7 @@ public interface PriceRepository {
     Collection<Price> findPricesByBarcode(String Barcode);
     Collection<Price> findPricesByStoreID(String StoreId);
 
+    Collection<Price> findTenSpecials();
 
 }
 
