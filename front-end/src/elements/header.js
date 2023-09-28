@@ -8,38 +8,37 @@ function Header() {
   const navigate = useNavigate();
   const [inputText, setInputText] = useState('');
 
-  function handleKeyDown(e) {
-    if (e.key === 'Enter') {
-      // The 'Enter' key was pressed
-      search()
-    }
-
-  };
-
   function search() {
     if (inputText) {
       navigate(`/search-results/${inputText}`)
     } 
   }
 
-  function goToCart() {
-      navigate('/cart'); // Navigate to the cart page
-  }
+  function handleKeyDown(e) {
+    if (e.key === 'Enter') {
+      // The 'Enter' key was pressed
+      search()
+    }
+  };
 
+  function goToCart() {
+    navigate('/cart'); // Navigate to the cart page
+  }
+  
   return (
       <div className='header'>
-        <button className ="logo-button" onClick={()=>{navigate('/')}}><img src={logo} className= "logo" alt="super price logo"/></button>
+        <button className ="logo-button"  onClick={()=>{navigate('/')}}><img src={logo} className= "logo" alt="super price logo"/></button>
         <div className='search-bar'>
           <input
             type="text"
             value={inputText}
-            onChange={(event)=>{setInputText(event.target.value);}}
-            handleKeyDown={()=>{handleKeyDown()}}
+            onChange={(event)=>{setInputText(event.target.value)}}
+            onKeyDown={handleKeyDown}
             placeholder="Enter product name..."
           />
           <button onClick={search}><img src={searchBtn} alt="magnifying glass"/></button>
         </div>
-          <div>
+        <div>
               <button className="ViewCart" onClick={goToCart}>View Cart</button>
           </div>
       </div>
@@ -47,4 +46,3 @@ function Header() {
 }
 
 export default Header;
- 

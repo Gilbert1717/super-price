@@ -1,10 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 import Footer from './elements/footer';
+import Popup from './elements/popup';
+import Header from './elements/header';
+
 import Categories from './pages/categories';
 import SearchResults from './pages/search_results';
 import CategoryResults from './pages/category_result';
 import ComparePrices from './pages/compare_prices';
-import Header from './elements/header';
 import CartPage from './pages/CartPage'; // Import the CartPage component
 import { CartProvider } from './pages/CartContext'; // Import the CartProvider
 import CheckoutPage from './pages/CheckoutPage'; // Import the CheckoutPage component
@@ -16,6 +19,7 @@ function App() {
       <div className="background">
           <CartProvider>
               <BrowserRouter>
+              <Popup />
               <Header />
                 <Routes>
                   <Route path="/" element={<Categories />} />
