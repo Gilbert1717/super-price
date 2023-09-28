@@ -12,13 +12,17 @@ function ComparePrices() {
 
   useEffect(() => {
     async function getSearch(product_name) {
-        if (product_name){
-          console.log(`${process.env.REACT_APP_API_URL}/price/storePrice/${query}`)
-          const response = await axios.get(`${process.env.REACT_APP_API_URL}/price/storePrice/${query}`);
-          if (!response.data) {
-            setData(null);
-          } else{
-            setData(response.data);
+      if (product_name){
+        const response = await axios.get(process.env.REACT_APP_API_URL + `/price/storePrice/${query}`);
+        if (!response.data) {
+          setData(null);
+        } else{
+          // Sort the data based on the selected sorting order
+          const sortedData = response.data.slice(); // Create a copy of the data
+          if (sortOrder === 'lowToHigh') {
+            sortedData.sort((a, b) => a.price.price - b.price.price);
+          } else {
+            sortedData.sort((a, b) => b.price.price - a.price.price);
           }
           setData(sortedData);
         }
