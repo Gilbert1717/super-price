@@ -38,9 +38,7 @@ public class OrderServiceImpl implements OrderService{
 
             // Convert the Date to a java.sql.Timestamp
             Timestamp deliveryTime = new Timestamp(parsedDate.getTime());
-            if(!deliveryTimeValidation(parsedDate.toInstant())){
-                throw new InvalidAttributesException("invalid delivery date");
-            }
+
 
             return new Order(deliveryTime,order.getDeliveryAddress(),order.getDeliveryType());
         } catch (ParseException e) {
@@ -48,17 +46,11 @@ public class OrderServiceImpl implements OrderService{
         }
     }
 
-    private boolean deliveryTimeValidation(Instant t1){
-        boolean valid_delivery_time = false;
-        Instant utcNow = Instant.now();
-        long diff = utcNow.until(t1, ChronoUnit.DAYS);
-        if (diff >= 1) {
-            valid_delivery_time = true;
-        }
-        return valid_delivery_time;
-    }
+
 
     public void deleteOrder(Order order) {
         orderRepository.deleteOrderByOrderId(order.getId());
     }
+
+    public Order getOrder(Long id) throws SQLException, InvalidAttributesException {return orderRepository.findOrderById(id);};
 }

@@ -12,5 +12,6 @@ public interface OrderRepository {
     Order createOrder(Order order) throws InvalidAttributesException;
     void deleteOrderByOrderId(long order_id);
     NewOrderResponse createOrderAndItems(Order order, Collection<OrderItem> orderItems) throws InvalidAttributesException;
+    Order findOrderById(long id) throws InvalidAttributesException, SQLException;
 
 }

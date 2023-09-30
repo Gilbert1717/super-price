@@ -1,5 +1,6 @@
 package superPrice.orders.service;
 
+import org.springframework.http.ResponseEntity;
 import superPrice.orders.model.Order;
 import superPrice.orders.model.DTO.NewOrderRequest;
 import superPrice.orders.model.OrderItem;
@@ -13,4 +14,5 @@ public interface OrderService {
     NewOrderResponse creatingOrder(NewOrderRequest order, Collection<OrderItem> orderItems) throws InvalidAttributesException, SQLException;
 
     void deleteOrder(Order order);
+    Order getOrder(Long id) throws SQLException, InvalidAttributesException;
 }

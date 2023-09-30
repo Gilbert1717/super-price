@@ -1,4 +1,4 @@
-package superPrice.models;
+package superPrice.storePrice.models;
 
 import org.junit.jupiter.api.Test;
 import superPrice.storePrice.model.Store;

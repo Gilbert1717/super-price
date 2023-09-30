@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import superPrice.orders.model.DTO.NewOrderRequest;
 import superPrice.orders.model.DTO.NewOrderResponse;
+import superPrice.orders.model.Order;
 import superPrice.orders.service.OrderService;
 
 import javax.naming.directory.InvalidAttributesException;
@@ -25,6 +26,18 @@ public class OrderController {
         try {
             NewOrderResponse o = service.creatingOrder(order,order.getOrderItems());
             return new ResponseEntity<>(o, HttpStatus.CREATED);
+        }
+        catch(Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage());
+        }
+    }
+    @GetMapping(value = "/{id}")
+    public ResponseEntity getOrder(@PathVariable long id) {
+        try {
+            Order o = service.getOrder(id);
+            return new ResponseEntity<>(o, HttpStatus.OK);
         }
         catch(Exception e) {
             return ResponseEntity

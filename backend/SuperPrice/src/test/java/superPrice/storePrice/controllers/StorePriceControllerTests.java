@@ -1,4 +1,4 @@
-package superPrice.controllers;
+package superPrice.storePrice.controllers;
 
 
 import org.junit.jupiter.api.BeforeEach;

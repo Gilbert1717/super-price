@@ -1,9 +1,11 @@
 package superPrice.orders.repository;
 
+import org.springframework.jdbc.datasource.init.UncategorizedScriptException;
 import org.springframework.stereotype.Repository;
 import superPrice.orders.model.Order;
 import superPrice.orders.model.OrderItem;
 import superPrice.orders.model.DTO.NewOrderResponse;
+import superPrice.storePrice.model.Price;
 
 import javax.naming.directory.InvalidAttributesException;
 import javax.sql.DataSource;
@@ -48,6 +50,23 @@ public class OrderRepositoryImpl implements OrderRepository{
         } catch (SQLException e) {
             throw new InvalidAttributesException("Error in creating order");
         }
+    }
+
+    @Override
+    public Order findOrderById(long id) throws UncategorizedScriptException, SQLException {
+//        try {
+            PreparedStatement stm = this.dataSource.getConnection().prepareStatement(
+                    "SELECT * FROM orders WHERE id = ?",Statement.RETURN_GENERATED_KEYS);
+            stm.setLong(1, id);
+            ResultSet rs = stm.executeQuery();
+            rs.next();
+            Order order = new Order(rs.getLong(1), rs.getTimestamp(2),
+                    rs.getTimestamp(3), rs.getString(4),rs.getString(5));
+            return order;
+//        }
+//        catch (Exception e){
+//            throw new UncategorizedScriptException("Error in findOrderById", e);
+//        }
     }
 
 

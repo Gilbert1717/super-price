@@ -1,4 +1,4 @@
-package superPrice.repositories;
+package superPrice.storePrice.repositories;
 
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.AfterEach;
