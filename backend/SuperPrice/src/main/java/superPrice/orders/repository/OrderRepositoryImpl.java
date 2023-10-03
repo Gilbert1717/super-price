@@ -53,8 +53,8 @@ public class OrderRepositoryImpl implements OrderRepository{
     }
 
     @Override
-    public Order findOrderById(long id) throws UncategorizedScriptException, SQLException {
-//        try {
+    public Order findOrderById(long id) throws InvalidAttributesException {
+        try {
             PreparedStatement stm = this.dataSource.getConnection().prepareStatement(
                     "SELECT * FROM orders WHERE id = ?",Statement.RETURN_GENERATED_KEYS);
             stm.setLong(1, id);
@@ -63,10 +63,10 @@ public class OrderRepositoryImpl implements OrderRepository{
             Order order = new Order(rs.getLong(1), rs.getTimestamp(2),
                     rs.getTimestamp(3), rs.getString(4),rs.getString(5));
             return order;
-//        }
-//        catch (Exception e){
-//            throw new UncategorizedScriptException("Error in findOrderById", e);
-//        }
+        }
+        catch (Exception e){
+            throw new InvalidAttributesException("Error in find order Id" + id);
+        }
     }
 
 
