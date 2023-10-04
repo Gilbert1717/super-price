@@ -99,7 +99,7 @@ function CheckoutPage() {
               <input
                 type="text"
                 name="address"
-                placeholder="Room - Street - Locality"
+                placeholder="Number - Street Name"
                 value={formData.address}
                 onChange={handleInputChange}
               />
