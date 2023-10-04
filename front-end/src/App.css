@@ -489,6 +489,15 @@
 }
 
 
+.creditCardImg{
+  width: auto;
+  height: 38.88px;
+}
+
+.red-text {
+  color: red;
+}
+
 .popup {
   padding: 20px;
   background: #fcdc5a;
