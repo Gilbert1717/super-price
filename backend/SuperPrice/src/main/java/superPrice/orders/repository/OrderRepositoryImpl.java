@@ -129,9 +129,8 @@ public class OrderRepositoryImpl implements OrderRepository{
     }
     @Override
     public Collection<FindItemResponse> getItemsInOrder(long orderID) throws InvalidAttributesException {
-        //Create order first in orders table
-        Collection<FindItemResponse> orderItems = new ArrayList<>();
         try {
+            Collection<FindItemResponse> orderItems = new ArrayList<>();
             //Create items in the order in orders_item relation table
             Connection connection = this.dataSource.getConnection();
             String query = "SELECT p.NAME as product_name, s.NAME as store_name, orderp.QUANTITY, sp.price " +
@@ -139,11 +138,8 @@ public class OrderRepositoryImpl implements OrderRepository{
                     "LEFT JOIN STORE s on orderp.STORE_ID = s.STORE_ID " +
                     "LEFT JOIN PRODUCT p on orderp.BARCODE = p.BARCODE " +
                     "LEFT JOIN store_price sp on orderp.BARCODE = sp.BARCODE and orderp.STORE_ID = sp.STORE_ID;";
-            log.info(query.toString());
             PreparedStatement stm = connection.prepareStatement(query);
             stm.setLong(1, orderID);
-
-
             ResultSet rs = stm.executeQuery();
             while(rs.next()){
                 FindItemResponse findItemResponse = new FindItemResponse(rs.getString(1), rs.getString(2),

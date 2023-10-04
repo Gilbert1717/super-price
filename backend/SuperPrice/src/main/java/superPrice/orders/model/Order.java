@@ -38,7 +38,7 @@ public class Order {
     }
     private void orderInfoValidation(String deliveryAddress,String deliveryType) throws InvalidAttributesException {
         if (deliveryAddress.length() > 4 &&
-                (deliveryType.toLowerCase().equals("express") || deliveryType.toLowerCase() .equals("standard"))){}
+                (deliveryType.toLowerCase().equals("Express") || deliveryType.toLowerCase() .equals("Regular"))){}
         else {
             throw new InvalidAttributesException("invalid delivery information");
         }

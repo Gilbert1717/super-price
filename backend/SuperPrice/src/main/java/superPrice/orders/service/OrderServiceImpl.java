@@ -24,10 +24,13 @@ public class OrderServiceImpl implements OrderService{
     public OrderServiceImpl(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
+
+    @Override
     public Order creatingOrder(NewOrderRequest order) throws InvalidAttributesException {
         Timestamp deliveryTime = converterOrderDeliveryTime(order.getDeliverTime());
         return orderRepository.createOrder(new Order(deliveryTime,order.getDeliveryAddress(), order.getDeliveryType()));
     }
+
     @Override
     public NewOrderResponse creatingOrderAndItem(NewOrderRequest order, Collection<OrderItem> orderItems) throws InvalidAttributesException{
         Order o = creatingOrder(order);
@@ -62,8 +65,13 @@ public class OrderServiceImpl implements OrderService{
     public void deleteOrder(long orderID) throws InvalidAttributesException {
         orderRepository.deleteOrderByOrderId(orderID);
     }
+
+
     @Override
-    public Order getOrder(Long id) throws SQLException, InvalidAttributesException {return orderRepository.findOrderById(id);};
+    public Order getOrder(Long id) throws SQLException, InvalidAttributesException {
+        return orderRepository.findOrderById(id);
+    }
+
 
     @Override
     public FindOrderItemResponse findOrderItemByID(long orderID) throws SQLException, InvalidAttributesException {
