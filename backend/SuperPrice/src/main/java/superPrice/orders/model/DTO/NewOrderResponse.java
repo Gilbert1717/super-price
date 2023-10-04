@@ -1,5 +1,6 @@
 package superPrice.orders.model.DTO;
 
+import org.springframework.http.ResponseEntity;
 import superPrice.orders.model.Order;
 import superPrice.orders.model.OrderItem;
 
@@ -21,4 +22,5 @@ public class NewOrderResponse {
     public Order getOrder() {
         return order;
     }
+
 }

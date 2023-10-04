@@ -52,7 +52,7 @@ class OrderRepositoryTest {
         Timestamp deliverTimestamp = Timestamp.from(testingTime);
 
         // run the method
-        Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "express"));
+        Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "Express"));
         Collection<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem("5369979017",104,2));
         orderItems.add(new OrderItem("5369979017",109,2));
@@ -61,7 +61,7 @@ class OrderRepositoryTest {
         Collection<OrderItem> ois = this.orderRepository.createItems(order.getId(),orderItems);
         OrderItem oi = (OrderItem)ois.toArray()[0];
         // check information in items
-        assertEquals(1,oi.getOrderId());
+        assertEquals(2,oi.getOrderId());
         assertEquals("5369979017",oi.getBarcode());
         assertEquals(104,oi.getStoreId());
         assertEquals(2,oi.getQuantity());
@@ -108,12 +108,12 @@ class OrderRepositoryTest {
         Timestamp deliverTimestamp = Timestamp.from(testingTime);
 
         // run the method
-        Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "express"));
+        Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "Express"));
 
         // check all the information in the dummy order with the order created in the database
         assertEquals(deliverTimestamp, order.getDeliverTime());
         assertEquals("testing address", order.getDeliveryAddress());
-        assertEquals("express", order.getDeliveryType());
+        assertEquals("Express", order.getDeliveryType());
         assertNotNull(order.getId());
         assertNotNull(order.getCreatingTime());
         assertDoesNotThrow(()->this.orderRepository.findOrderById(order.getId()));
@@ -125,7 +125,7 @@ class OrderRepositoryTest {
         Instant testingTime = Instant.now().plus(2, ChronoUnit.DAYS);
         Timestamp deliverTimestamp = Timestamp.from(testingTime);
         // create order
-        Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "express"));
+        Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "Express"));
 
         // run delete method
         this.orderRepository.deleteOrderByOrderId(order.getId());
@@ -171,13 +171,13 @@ class OrderRepositoryTest {
         Timestamp deliverTimestamp = Timestamp.from(testingTime);
 
         // Create order
-        Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "express"));
+        Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "Express"));
 
         // Test method
         Order order_found = this.orderRepository.findOrderById(order.getId());
         assertEquals(deliverTimestamp, order_found.getDeliverTime());
         assertEquals("testing address", order_found.getDeliveryAddress());
-        assertEquals("express", order_found.getDeliveryType());
+        assertEquals("Express", order_found.getDeliveryType());
     }
 
     @Test
@@ -188,7 +188,7 @@ class OrderRepositoryTest {
         Timestamp deliverTimestamp = Timestamp.from(testingTime);
 
         // Create order
-        Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "express"));
+        Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "Express"));
 
         Collection<OrderItem> orderItems = new ArrayList<>();
         orderItems.add(new OrderItem("5369979017",104,2));
