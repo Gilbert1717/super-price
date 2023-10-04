@@ -14,6 +14,8 @@ function Header() {
     } 
   }
 
+  
+
   function handleKeyDown(e) {
     if (e.key === 'Enter') {
       // The 'Enter' key was pressed
@@ -38,9 +40,16 @@ function Header() {
           />
           <button onClick={search}><img src={searchBtn} alt="magnifying glass"/></button>
         </div>
+
+
+        <div>
+          <button className="OrdersBtn" onClick={()=>navigate("/orders")}>View Orders</button>
+      </div>
+
         <div>
               <button className="ViewCart" onClick={goToCart}>View Cart</button>
           </div>
+
       </div>
   );
 }

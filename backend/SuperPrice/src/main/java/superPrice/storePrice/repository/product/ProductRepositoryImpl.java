@@ -83,9 +83,9 @@ public class ProductRepositoryImpl implements ProductRepository {
     public Collection<Product> findProductByName(String name) {
         try {
             Connection connection = dataSource.getConnection();
-            String query = "select * from product where UPPER(name) regexp ?";
+            String query = "select * from product where UPPER(name) like ?";
             PreparedStatement stm = connection.prepareStatement(query);
-            stm.setString(1, ".*" + name.toUpperCase() + ".*");
+            stm.setString(1, "%" + name.toUpperCase() + "%");
             Collection<Product> products = new ArrayList<>();
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
@@ -102,10 +102,10 @@ public class ProductRepositoryImpl implements ProductRepository {
     public Collection<Product> findProductByAnyCondition(String condition) {
         try {
             Connection connection = dataSource.getConnection();
-            String query = "select * from product where UPPER(name) regexp ? or barcode regexp ?";
+            String query = "select * from product where UPPER(name) like ? or barcode like ?";
             PreparedStatement stm = connection.prepareStatement(query);
-            stm.setString(1, ".*" + condition.toUpperCase() + ".*");
-            stm.setString(2, ".*" + condition + ".*");
+            stm.setString(1, "%" + condition.toUpperCase() + "%");
+            stm.setString(2, "%" + condition + "%");
             Collection<Product> products = new ArrayList<>();
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
