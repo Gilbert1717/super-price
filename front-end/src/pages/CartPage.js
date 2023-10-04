@@ -10,12 +10,23 @@ function CartPage() {
     const [isDeliveryInputValid, setIsDeliveryInputValid] = useState(false);
 
     // Function to remove an item from the cart
-    function removeFromCart(index) {
-        dispatch({ type: REMOVE_FROM_CART, payload: index });
+    function removeFromCart(productId, store) {
+        dispatch({ type: REMOVE_FROM_CART, payload: {barcode: productId, store: store}});
     }
 
+    // Group items by name, store, address, and price, and calculate quantity for each group
+    const groupedItems = cartState.items.reduce((groups, item) => {
+        const key = item.name + item.store + item.address + item.price;
+        if (!groups[key]) {
+            groups[key] = { ...item, quantity: 0 };
+        }
+        groups[key].quantity += 1;
+        return groups;
+    }, {});
+
+
     // Calculate the total price of items in the cart
-    const baseTotal = cartState.items.reduce((acc, item) => acc + item.price, 0);
+    const baseTotal = Object.values(groupedItems).reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     // Calculate the shipping cost based on the delivery type
     const shippingCost = deliveryType === 'Express' ? 30 : 10;
@@ -43,7 +54,7 @@ function CartPage() {
 
     // Validate delivery inputs
     function validateDeliveryInputs() {
-        if (userTime || userDate) {
+        if (userTime && userDate) {
             setIsDeliveryInputValid(true);
         } else {
             setIsDeliveryInputValid(false);
@@ -51,7 +62,7 @@ function CartPage() {
     }
 
     // Check if the cart is empty
-    const isCartEmpty = cartState.items.length === 0;
+    const isCartEmpty = Object.keys(groupedItems).length === 0;
 
     return (
         <div className="cartPage-container">
@@ -61,14 +72,16 @@ function CartPage() {
             ) : (
                 <>
                     <div className="cart-items">
-                        {cartState.items.map((item, index) => (
+                        {Object.values(groupedItems).map((item, index) => (
                             <div className="cart-item" key={index}>
                                 <div className="cart-product-name">{item.name}</div>
                                 <div className="cart-store-name">{item.store}</div>
                                 <div className="cart-store-address">{item.address}</div>
-                                <p className="cart-price">{"$" + item.price.toFixed(2)}</p>
-                                <button className="cart-remove-button" onClick={() => removeFromCart(index)}>
-                                    Remove
+                                <p className="cart-price">
+                                    ${item.price.toFixed(2)} x {item.quantity}
+                                </p>
+                                <button className="cart-remove-button" onClick={() => removeFromCart(item.barcode, item.store)}>
+                                    Remove All
                                 </button>
                             </div>
                         ))}

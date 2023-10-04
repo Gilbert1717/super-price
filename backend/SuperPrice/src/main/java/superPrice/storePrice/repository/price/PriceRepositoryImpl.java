@@ -21,6 +21,26 @@ public class PriceRepositoryImpl implements PriceRepository {
     }
 
     @Override
+    public Collection<Price> findTenSpecials() {
+        try {
+            Connection connection = dataSource.getConnection();
+            String priceQuery = "select * from store_price where STATUS= 'Special Offer';";
+            PreparedStatement stm = connection.prepareStatement(priceQuery);
+            ResultSet rs = stm.executeQuery();
+            ArrayList<Price> prices = new ArrayList<>();
+            while (rs.next()) {
+                Price price = new Price(rs.getString(1), rs.getInt(2),
+                        rs.getDouble(3), rs.getString(4));
+                prices.add(price);
+            }
+            connection.close();
+            return prices;
+        } catch (SQLException e) {
+            throw new UncategorizedScriptException("Error in findTenSpecials", e);
+        }
+    }
+
+    @Override
     public Price findPricesByStoreIdAndBarcode(String storeId, String barcode) {
         try {
             Connection connection = dataSource.getConnection();

@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+  api:
+    platform: "linux/amd64"
+    build: backend/SuperPrice/
+    ports:
+      - "8080:8080"
+  web:
+    platform: "linux/amd64"
+    build: front-end/
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_URL: "http://localhost:8080"
+    depends_on:
+      - api
