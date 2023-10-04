@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import superPrice.orders.model.DTO.FindOrderItemResponse;
+import superPrice.orders.model.DTO.FindOrderResponse;
 import superPrice.orders.model.DTO.NewOrderRequest;
 import superPrice.orders.model.DTO.NewOrderResponse;
 import superPrice.orders.model.Order;
@@ -24,7 +26,7 @@ public class OrderController {
     @PostMapping
     public ResponseEntity newOrder(@RequestBody NewOrderRequest order) {
         try {
-            NewOrderResponse o = service.creatingOrder(order,order.getOrderItems());
+            NewOrderResponse o = service.creatingOrderAndItem(order,order.getOrderItems());
             return new ResponseEntity<>(o, HttpStatus.CREATED);
         }
         catch(Exception e) {
@@ -36,8 +38,8 @@ public class OrderController {
     @GetMapping(value = "/{id}")
     public ResponseEntity getOrder(@PathVariable long id) {
         try {
-            Order o = service.getOrder(id);
-            return new ResponseEntity<>(o, HttpStatus.OK);
+            FindOrderItemResponse orderItemResponse = service.findOrderItemByID(id);
+            return new ResponseEntity<>(orderItemResponse, HttpStatus.OK);
         }
         catch(Exception e) {
             return ResponseEntity

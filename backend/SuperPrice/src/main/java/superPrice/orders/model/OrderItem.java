@@ -4,8 +4,13 @@ public class OrderItem {
     private long orderId;
     private String barcode;
     private int storeId;
-
     private int quantity;
+    public OrderItem(){}
+    public OrderItem(String barcode, int storeId, int quantity) {
+        this.barcode = barcode;
+        this.storeId = storeId;
+        this.quantity = quantity;
+    }
 
     public OrderItem(long orderId, String barcode, int storeId, int quantity) {
         this.orderId = orderId;
@@ -14,11 +19,7 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    public OrderItem(String barcode, int storeId, int quantity) {
-        this.barcode = barcode;
-        this.storeId = storeId;
-        this.quantity = quantity;
-    }
+
 
     public String getBarcode() {
         return barcode;
