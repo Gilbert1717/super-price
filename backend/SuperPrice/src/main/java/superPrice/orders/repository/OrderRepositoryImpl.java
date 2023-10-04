@@ -41,7 +41,7 @@ public class OrderRepositoryImpl implements OrderRepository{
             if (row == 0) {
                 throw new SQLException("Failed to create order = " + order);
             }
-
+            log.info("Creating order" + stm);
             ResultSet generatedKeys = stm.getGeneratedKeys();
             if (generatedKeys.next()) {
                 Long id = generatedKeys.getLong(1);
@@ -90,7 +90,7 @@ public class OrderRepositoryImpl implements OrderRepository{
                 stm.setString(2, oi.getBarcode());
                 stm.setInt(3, oi.getStoreId());
                 stm.setInt(4, oi.getQuantity());
-
+                log.info("Creating items" + stm);
                 int row = stm.executeUpdate();
                 if (row == 0) {
                     throw new InvalidAttributesException("Failed to add item to order = " + orderID);

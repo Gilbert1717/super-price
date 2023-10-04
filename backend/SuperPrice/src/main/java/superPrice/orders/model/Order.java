@@ -38,7 +38,7 @@ public class Order {
     }
     private void orderInfoValidation(String deliveryAddress,String deliveryType) throws InvalidAttributesException {
         if (deliveryAddress.length() > 4 &&
-                (deliveryType.toLowerCase().equals("Express") || deliveryType.toLowerCase() .equals("Regular"))){}
+                (deliveryType.toLowerCase().equals("express") || deliveryType.toLowerCase() .equals("regular"))){}
         else {
             throw new InvalidAttributesException("invalid delivery information");
         }
@@ -68,19 +68,9 @@ public class Order {
         return deliveryAddress;
     }
 
-    public void setDeliverTime(Timestamp deliverTime) {
-        this.deliverTime = deliverTime;
-    }
-
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
     public String getDeliveryType() {
         return deliveryType;
     }
 
-    public void setDeliveryType(String deliveryType) {
-        this.deliveryType = deliveryType;
-    }
+
 }
