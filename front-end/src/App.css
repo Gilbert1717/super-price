@@ -141,8 +141,7 @@
   color: #60ee08;
   width: 69px;
   padding: 1%;
-  font-weight: bold;
-  font-style: italic;
+  flex: 0.25;
 }
 
 .footer{
@@ -167,6 +166,50 @@
   border-radius: 15px;
 }
 
+.compare-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: row; /* Stack items vertically */
+}
+
+.compareHeading {
+  display: inline-block; /* Ensure the heading takes only the necessary width */
+  text-align: center;
+  margin-inline: 100px;
+}
+
+.sorting-Feature {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+}
+
+.compare-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: row; /* Stack items vertically */
+}
+
+.compareHeading {
+  display: inline-block; /* Ensure the heading takes only the necessary width */
+  text-align: center;
+  margin-inline: 100px;
+}
+
+.sorting-Feature {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+}
+
 .store-name, .store-address {
   flex: 1; /* Allows each part to expand and take equal space horizontally */
   font-weight: bold;
@@ -180,8 +223,330 @@
 .compareHeading{
   align-self: center;
   font-size: xx-large;
-  color: #ffffff;
   font-family: cursive;
+  color: white;
+}
+
+.AddToCart {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+}
+
+.AddToCart:hover {
+  background-color: #008000;
+}
+
+/* CheckOutPage */
+.CheckOutContainer{
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(25, 25, 25, 0.75), rgba(25, 25, 25, 0.75)), url(./images/backgroud.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  font-family: 'Arial', sans-serif;
+}
+
+*{
+  font-family: 'Arial', sans-serif;
+  margin:0; padding:0;
+  box-sizing: border-box;
+  outline: none; border:none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+}
+
+.CheckOutContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:25px;
+  min-height: 100vh;
+}
+
+.CheckOutContainer form{
+  padding:20px;
+  width:700px;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  border-radius: 10px;
+}
+
+.CheckOutContainer form .row{
+  display: flex;
+  flex-wrap: wrap;
+  gap:15px;
+}
+
+.CheckOutContainer form .row .col{
+  flex:1 1 250px;
+}
+
+.CheckOutContainer form .row .col .title{
+  font-size: 20px;
+  color:#333;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.CheckOutContainer form .row .col .inputBox{
+  margin:15px 0;
+}
+
+.CheckOutContainer form .row .col .inputBox span{
+  margin-bottom: 10px;
+  display: block;
+}
+
+.CheckOutContainer form .row .col .inputBox input{
+  width: 100%;
+  border:1px solid #ccc;
+  padding:10px 15px;
+  font-size: 15px;
+  text-transform: none;
+  border-radius: 10px;
+}
+
+.CheckOutContainer form .row .col .inputBox input::placeholder{
+  color: grey;
+}
+
+
+.CheckOutContainer form .row .col .inputBox input:focus{
+  border:1px solid #000;
+}
+
+.CheckOutContainer form .row .col .flex{
+  display: flex;
+  gap:15px;
+}
+
+.CheckOutContainer form .row .col .flex .inputBox{
+  margin-top: 5px;
+}
+
+.CheckOutContainer form .submit-btn{
+  width: 100%;
+  padding:12px;
+  font-size: 17px;
+  background: #6853d1;
+  color:#fff;
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.CheckOutContainer form .submit-btn:hover{
+  background: #12b754;
+}
+
+.cartPage-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  gap: 20px; /* Add vertical spacing between items */
+  padding: 2.5%;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between; /* Evenly space the parts horizontally */
+  align-items: center; /* Center items vertically */
+  border: 4px solid #000; /* Add a border or customize as needed */
+  padding: 10px;
+  background-color: #999999;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.cart-store-name,
+.cart-store-address {
+  flex: 1; /* Allows each part to expand and take equal space horizontally */
+  font-weight: bold;
+}
+
+.cart-product-name {
+  flex: 1; /* Allows each part to expand and take equal space horizontally */
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.cartPage-Heading {
+  align-self: center;
+  font-size: xx-large;
+  font-family: cursive;
+  color: white;
+}
+
+.cart-price {
+  font-size: larger;
+  color: #60ee08;
+  width: 69px;
+  padding: 1%;
+  flex: 0.25;
+}
+
+/* Style for the total price paragraph */
+.cart-total-price {
+  font-size: larger;
+  color: #60ee08;
+  margin-right: 5px; /* Add right margin for spacing */
+  text-align: right;
+  margin-top: 20px;
+}
+
+/* Style for the Checkout button */
+.cart-checkout-button {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+  float: right;
+}
+
+/* Hover effect for the Checkout button */
+.cart-checkout-button:hover {
+  background-color: #0056b3;
+}
+
+.cart-checkout-error {
+  color: #d11a2a;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.cart-remove-button {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+}
+
+.cart-remove-button:hover {
+  background-color: #d11a2a;
+}
+
+.ViewCart, .Profile {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+}
+
+.ViewCart:hover, .Profile:hover, .sorting-Feature:hover {
+  background-color: #007BFF;
+}
+
+.delivery-and-price {
+  display: inline-block;
+  margin-left: auto; /* Push the container to the right */
+  margin-right: 0; /* Remove the right margin */
+  text-align: right; /* Align the contents to the right */
+}
+
+.delivery-label {
+  font-weight: bold; /* Make the label text bold */
+  display: inline-block; /* Display the label inline with the input */
+  margin-right: 10px; /* Add some spacing between the label and input */
+  color: white; /* Text color */
+  font-family: cursive;
+  margin-inline: 30px;
+}
+
+.delivery-label::placeholder {
+  text-transform: uppercase;
+}
+
+.delivery-input {
+  padding: 5px; /* Add padding for better visual spacing */
+  border: 1px solid #ccc; /* Add a border for a clean look */
+  border-radius: 4px; /* Round the input corners */
+  font-size: 16px; /* Font size */
+}
+
+/* Add focus styles for better user experience */
+.delivery-input:focus {
+  border-color: #007BFF; /* Change border color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow on focus */
+}
+
+
+.creditCardImg{
+  width: auto;
+  height: 38.88px;
+}
+
+.red-text {
+  color: red;
+}
+
+.popup {
+  padding: 20px;
+  background: #fcdc5a;
+  border-radius: 10px;
+  border: 2px solid white;
+  width: 60%;
+  position: fixed; /* Use 'fixed' instead of 'absolute' for centering */
+  top: 50%; /* Move the top edge to the vertical center of the screen */
+  left: 50%; /* Move the left edge to the horizontal center of the screen */
+  transform: translate(-50%, -50%); /* Center the element precisely */
+  z-index: 5;
+}
+
+.popup h1{
+  color: red;
+  -webkit-text-stroke: black 1px;
+}
+
+/* css for close button */
+.popup button {
+  background-color: red;
+  color: #fff;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup .product-btn{
+  margin: 10px;
+  background-color: white;
+  color: #fff;
+  border: 2px solid black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup p, h4, h3, h2{
+  padding-bottom:4px;
+  color: black;
+}
+
+.product-btn:hover{
+  background-color: #f3ff14;
+}
+
+.popup h2 {
+  color:#008000;
 }
 
 /* search for order  */

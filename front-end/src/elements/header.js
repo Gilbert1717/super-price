@@ -22,6 +22,10 @@ function Header() {
       search()
     }
   };
+
+  function goToCart() {
+    navigate('/cart'); // Navigate to the cart page
+  }
   
   return (
       <div className='header'>
@@ -37,9 +41,15 @@ function Header() {
           <button onClick={search}><img src={searchBtn} alt="magnifying glass"/></button>
         </div>
 
+
         <div>
           <button className="OrdersBtn" onClick={()=>navigate("/orders")}>View Orders</button>
       </div>
+
+        <div>
+              <button className="ViewCart" onClick={goToCart}>View Cart</button>
+          </div>
+
       </div>
   );
 }

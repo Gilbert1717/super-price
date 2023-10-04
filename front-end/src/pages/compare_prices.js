@@ -2,31 +2,58 @@ import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams } from 'react-router-dom';
 import axios from "axios"
-  
+import { useCart, ADD_TO_CART } from './CartContext'; // Import the CartContext
+
 function ComparePrices() {
   const { query } = useParams();
   const [data, setData] = useState(null);
-  
+  const { dispatch } = useCart(); // Access the cart context
+  const [sortOrder, setSortOrder] = useState('lowToHigh'); // State for sorting order
+
   useEffect(() => {
     async function getSearch(product_name) {
-        if (product_name){
-          const response = await axios.get(`http://localhost:8080/price/storePrice/${query}`);
-          console.log(response)
-          if (!response.data) {
-            setData(null);
-          } else{
-            setData(response.data);
+      if (product_name){
+        const response = await axios.get(process.env.REACT_APP_API_URL + `/price/storePrice/${query}`);
+        if (!response.data) {
+          setData(null);
+        } else{
+          // Sort the data based on the selected sorting order
+          const sortedData = response.data.slice(); // Create a copy of the data
+          if (sortOrder === 'lowToHigh') {
+            sortedData.sort((a, b) => a.price.price - b.price.price);
+          } else {
+            sortedData.sort((a, b) => b.price.price - a.price.price);
           }
-        } 
+          setData(sortedData);
+        }
+      }
     }
 
     getSearch(query);
-  }, [query])
+  }, [query, sortOrder])
 
+  // Function to add an item to the cart
+  function addToCart(item) {
+    dispatch({ type: ADD_TO_CART, payload: item });
+  }
+
+  // Function to handle sorting order change
+  function handleSortOrderChange(event) {
+    setSortOrder(event.target.value);
+  }
 
   return (
       <div className="compare-container">
-        <h2 className='compareHeading'>Compare Prices for <em>'{query}':</em></h2>
+        <div className="compare-header">
+          <h2 className='compareHeading'>
+            Compare Prices for <em>'{query}':</em>
+          </h2>
+          {/* Dropdown for sorting */}
+          <select className="sorting-Feature" value={sortOrder} onChange={handleSortOrderChange}>
+            <option value="lowToHigh">Low to High</option>
+            <option value="highToLow">High to Low</option>
+          </select>
+        </div>
         {data != null
             ? data.map((price_product_store, _) => (
                 <div className="compare-item" key={uuidv4()}>
@@ -39,9 +66,16 @@ function ComparePrices() {
                   <div className="store-address">
                     {price_product_store["store"]["address"]}
                   </div>
-                  <p className='price'>{"$" + price_product_store["price"]["price"]}</p>
-                  
-
+                  <p className='price'>{"$" + price_product_store["price"]["price"].toFixed(2)}</p>
+                  <button className='AddToCart' onClick={() => addToCart({
+                    barcode: price_product_store["product"]["barcode"],
+                    name: price_product_store["product"]["name"],
+                    store: price_product_store["store"]["name"],
+                    address: price_product_store["store"]["address"],
+                    price: price_product_store["price"]["price"],
+                  })}>
+                    Add to Cart
+                  </button>
                 </div>
             ))
             : ""}
@@ -50,3 +84,4 @@ function ComparePrices() {
 }
 
 export default ComparePrices;
+ 

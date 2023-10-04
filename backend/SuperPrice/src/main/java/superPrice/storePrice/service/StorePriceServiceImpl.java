@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 @Service
 public class StorePriceServiceImpl implements StorePriceService {
 //    private ProductRepository productRepository;
@@ -32,6 +35,29 @@ public class StorePriceServiceImpl implements StorePriceService {
     public Collection<Product> findAllProducts(){
         return this.productRepositoryImpl.findAll();
     }
+
+    @Override
+    public Collection<StorePrice> findTenSpecials() {
+        Collection<Price> prices = this.priceRepositoryImpl.findTenSpecials();
+        Collection<StorePrice> tempStorePrices = new ArrayList<>();
+
+        for (Price price:prices) {
+            Product p = this.productRepositoryImpl.findProductByBarcode(price.getBarcode());
+            Store s = this.storeRepositoryImpl.findStoreByStoreId(Integer.toString(price.getStoreid()));
+            StorePrice sp = new StorePrice(p,s,price);
+            tempStorePrices.add(sp);
+        }
+
+        Collections.shuffle((List<StorePrice>) tempStorePrices);
+
+        Collection<StorePrice> storePrices = new ArrayList<>();
+
+        for (int i = 0; i < 10; i ++)
+            storePrices.add(((ArrayList<StorePrice>) tempStorePrices).get(i));
+
+        return storePrices;
+    }
+
     @Override
     public Collection<Product> findProductByCategory(String category){
         return this.productRepositoryImpl.findProductByCategory(category);
