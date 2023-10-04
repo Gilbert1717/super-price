@@ -10,8 +10,8 @@ function CartPage() {
     const [isDeliveryInputValid, setIsDeliveryInputValid] = useState(false);
 
     // Function to remove an item from the cart
-    function removeFromCart(productId) {
-        dispatch({ type: REMOVE_FROM_CART, payload: productId });
+    function removeFromCart(productId, store) {
+        dispatch({ type: REMOVE_FROM_CART, payload: {barcode: productId, store: store}});
     }
 
     // Group items by name, store, address, and price, and calculate quantity for each group
@@ -80,8 +80,8 @@ function CartPage() {
                                 <p className="cart-price">
                                     ${item.price.toFixed(2)} x {item.quantity}
                                 </p>
-                                <button className="cart-remove-button" onClick={() => removeFromCart(index)}>
-                                    Remove
+                                <button className="cart-remove-button" onClick={() => removeFromCart(item.barcode, item.store)}>
+                                    Remove All
                                 </button>
                             </div>
                         ))}

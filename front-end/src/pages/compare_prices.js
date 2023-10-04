@@ -68,6 +68,7 @@ function ComparePrices() {
                   </div>
                   <p className='price'>{"$" + price_product_store["price"]["price"].toFixed(2)}</p>
                   <button className='AddToCart' onClick={() => addToCart({
+                    barcode: price_product_store["product"]["barcode"],
                     name: price_product_store["product"]["name"],
                     store: price_product_store["store"]["name"],
                     address: price_product_store["store"]["address"],
