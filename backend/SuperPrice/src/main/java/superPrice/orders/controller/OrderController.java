@@ -42,9 +42,7 @@ public class OrderController {
             return new ResponseEntity<>(orderItemResponse, HttpStatus.OK);
         }
         catch(Exception e) {
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .body(e.getMessage());
+            return new ResponseEntity<>(null, HttpStatus.OK);
         }
     }
 }

@@ -75,9 +75,11 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public FindOrderItemResponse findOrderItemByID(long orderID) throws SQLException, InvalidAttributesException {
+
         Order order = getOrder(orderID);
         FindOrderResponse orderResponse = new FindOrderResponse(order.getCreatingTime(),order.getDeliverTime(),order.getDeliveryType());
         Collection<FindItemResponse> itemsInOrder = this.orderRepository.getItemsInOrder(orderID);
         return new FindOrderItemResponse(orderResponse,itemsInOrder);
+
     }
 }

@@ -26,6 +26,24 @@ category_product_dict = {
     "Accessories": [
         "Backpack", "Watch", "Sunglasses", "Bracelet",
         "Wallet", "Hat", "Necklace", "Handbag"
+    ],
+    "Dairy": [
+        "Cheese", "Milk", "Yogurt", "Butter"
+    ],
+    "Meats": [
+        "Beef", "Pork", "Lamb", "Chicken", "Kangaroo", "Turkey"
+    ],
+    "Fish": [
+        "Tuna", "Salmon", "Sardines", "Anchovies", "Cod", "Roe"
+    ],
+    "Fruit": [
+        "Apple", "Orange", "Banana", "Mango", "Pineapple", "Pear", "Watermelon", "Passion fruit", "Kiwi fruit"
+    ],
+    "Bakery": [
+        "Croissant", "Muffin", "Bread", "Donut", "Cookie", "Cake"
+    ],
+    "Vegetables": [
+        "Potato", "Corn", "Lettuce", "Cucumber", "Onion", "Garlic", "Carrot", "Broccoli", "Cauliflower", "Capsicum", "Beans", "Peas"
     ]
 }
 
