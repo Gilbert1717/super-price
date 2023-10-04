@@ -5,6 +5,7 @@ import SearchResults from './pages/search_results';
 import CategoryResults from './pages/category_result';
 import ComparePrices from './pages/compare_prices';
 import Header from './elements/header';
+import OrdersPage from './pages/OrdersPage';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                   <Route path="/search-results/:query" element={<SearchResults />} />
                   <Route path="/category-results/:query" element={<CategoryResults />} />
                   <Route path="/compare-prices/:query" element={<ComparePrices />} />
+                  <Route path="/orders" element={<OrdersPage />} />
                 </Routes>
               </BrowserRouter>
       </div>

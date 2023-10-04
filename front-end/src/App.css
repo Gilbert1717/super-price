@@ -184,3 +184,18 @@
   font-family: cursive;
 }
 
+/* search for order  */
+.order-search{
+  margin: auto;
+}
+
+.order-result{
+  background-color: rgb(40, 216, 27, 0.3);
+  border-radius: 25px;
+  border: 2px solid white;
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px;
+  justify-content: center;
+}
