@@ -141,7 +141,8 @@
   color: #60ee08;
   width: 69px;
   padding: 1%;
-  flex: 0.25;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .footer{
@@ -563,4 +564,23 @@
   margin-top: 20px;
   padding: 10px;
   justify-content: center;
+}
+
+.OrdersBtn {
+  padding: 1%;
+  margin-left: 30px;
+}
+
+.ViewCart, .OrdersBtn {
+  background-color: #999999;
+  color: #fff;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: right;
+}
+
+.ViewCart:hover, .OrdersBtn:hover, .sorting-Feature:hover {
+  background-color: #007BFF;
 }
