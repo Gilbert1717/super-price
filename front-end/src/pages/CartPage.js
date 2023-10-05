@@ -78,7 +78,7 @@ function CartPage() {
                                 <div className="cart-store-name">{item.store}</div>
                                 <div className="cart-store-address">{item.address}</div>
                                 <p className="cart-price">
-                                    ${item.price.toFixed(2)} x {item.quantity}
+                                    ${item.price.toFixed(2)} <br /> x {item.quantity}
                                 </p>
                                 <button className="cart-remove-button" onClick={() => removeFromCart(item.barcode, item.store)}>
                                     Remove All

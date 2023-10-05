@@ -19,12 +19,16 @@ import CheckoutPage from './pages/CheckoutPage'; // Import the CheckoutPage comp
 import './App.css';
 
 function App() {
+
+  const popUpTimer = 6 // in seconds
+
   return (
     <div className="App">
       <div className="background">
           <CartProvider>
               <BrowserRouter>
-              <Popup />
+              {/* only show popup if x seconds passed */}
+              {(Date.now() - localStorage.getItem('lastTimePopup') > popUpTimer * 1000) ? <Popup /> :""}
               <Header />
                 <Routes>
                   <Route path="/" element={<Categories />} />

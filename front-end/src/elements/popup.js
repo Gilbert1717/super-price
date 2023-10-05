@@ -10,14 +10,19 @@ function Popup() {
   const [showPopup, setShowPopup] = useState(true);
   const [data, setData] = useState(null);
 
+  if (localStorage.getItem("lastTimePopup") === null){
+    localStorage.setItem("lastTimePopup", Date.now())
+  }
+
   useEffect(() => {
     async function getSpecials(){
       const response = await axios.get(process.env.REACT_APP_API_URL + "/price/ten");
       console.log(response.data)
       setData(response.data)
     }
-    
-    getSpecials()
+
+    getSpecials() 
+    localStorage.setItem('lastTimePopup', Date.now())    
   }, [])
 
   function handleClick(barcode){
@@ -29,7 +34,10 @@ function Popup() {
     <>
       { showPopup ?
       <div className='popup'>
-          <h1>Special Offers!</h1>
+          <div style={{  display: "flex" }}>
+          <h1 style={{  flex: "20" }}>Special Offers!</h1>
+          <button  style={{  flex: "1" }} onClick={()=> setShowPopup(false)}> x </button>
+          </div>
           <br />
           <h3>View our latest products on special:</h3>
           <br />
