@@ -30,10 +30,6 @@
   margin-inline: 40px;
 }
 
-.Profile {
-  padding: 1%;
-}
-
 .logo {
   width: 200px;
   cursor: pointer;
@@ -140,7 +136,7 @@
   font-size: larger;
   color: #60ee08;
   width: 69px;
-  padding: 1%;
+  margin-right: 10px;
   font-weight: bold;
   font-style: italic;
 }
@@ -389,6 +385,7 @@
   width: 69px;
   padding: 1%;
   flex: 0.25;
+  font-weight: bold;
 }
 
 /* Style for the total price paragraph */
@@ -559,7 +556,7 @@
   background-color: rgb(40, 216, 27, 0.3);
   border-radius: 25px;
   border: 2px solid white;
-  width: 50%;
+  width: 40%;
   margin: auto;
   margin-top: 20px;
   padding: 10px;
@@ -583,4 +580,13 @@
 
 .ViewCart:hover, .OrdersBtn:hover, .sorting-Feature:hover {
   background-color: #007BFF;
+}
+
+.box{
+  margin: auto;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: white;
+  max-width: 50%;
+  padding: 2%;
 }
