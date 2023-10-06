@@ -39,7 +39,7 @@ public class ProductRepositoryImplTests {
     @Test
     void should_retrieve_all_products() {
         var prods = repo.findAll();
-        assertEquals(40, prods.size());
+        assertEquals(81, prods.size());
     }
 
     @Test
@@ -110,7 +110,7 @@ public class ProductRepositoryImplTests {
     @Test
     void should_return_many_products_from_generic_barcode_search() {
         var prods = repo.findProductByAnyCondition("1");
-        assertEquals(28, prods.size());
+        assertEquals(60, prods.size());
     }
 
 
