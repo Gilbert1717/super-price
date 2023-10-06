@@ -1,23 +1,21 @@
 package superPrice.orders.model.DTO;
 
-import superPrice.orders.model.Order;
-
 import java.util.Collection;
 
 public class FindOrderItemResponse {
-    private FindOrderResponse order;
-    private Collection<FindItemResponse> findItemResponse;
+    private final FindOrderResponse order;
+    private final Collection<FindItemResponse> orderItems;
 
-    public FindOrderItemResponse(FindOrderResponse order, Collection<FindItemResponse> findItemResponse) {
+    public FindOrderItemResponse(FindOrderResponse order, Collection<FindItemResponse> orderItems) {
         this.order = order;
-        this.findItemResponse = findItemResponse;
+        this.orderItems = orderItems;
     }
 
     public FindOrderResponse getOrder() {
         return order;
     }
 
-    public Collection<FindItemResponse> getFindItemResponse() {
-        return findItemResponse;
+    public Collection<FindItemResponse> getOrderItems() {
+        return orderItems;
     }
 }

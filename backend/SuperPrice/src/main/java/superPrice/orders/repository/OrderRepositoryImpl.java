@@ -15,13 +15,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Repository
-public class OrderRepositoryImpl implements OrderRepository{
+public class OrderRepositoryImpl implements OrderRepository {
     private final DataSource dataSource;
     Logger log = LoggerFactory.getLogger(OrderRepositoryImpl.class);
 
     public OrderRepositoryImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
+
     @Override
     public Order createOrder(Order order) throws InvalidAttributesException {
         try {
@@ -46,7 +47,7 @@ public class OrderRepositoryImpl implements OrderRepository{
             if (generatedKeys.next()) {
                 Long id = generatedKeys.getLong(1);
                 connection.close();
-                return new Order(id, timestamp, order.getDeliverTime(),order.getDeliveryAddress(),order.getDeliveryType());
+                return new Order(id, timestamp, order.getDeliverTime(), order.getDeliveryAddress(), order.getDeliveryType());
             } else {
                 connection.close();
                 throw new SQLException("Creating order failed, no ID obtained.");
@@ -61,16 +62,15 @@ public class OrderRepositoryImpl implements OrderRepository{
         try {
             Connection connection = this.dataSource.getConnection();
             PreparedStatement stm = connection.prepareStatement(
-                    "SELECT * FROM orders WHERE id = ?",Statement.RETURN_GENERATED_KEYS);
+                    "SELECT * FROM orders WHERE id = ?", Statement.RETURN_GENERATED_KEYS);
             stm.setLong(1, id);
             ResultSet rs = stm.executeQuery();
             rs.next();
             Order order = new Order(rs.getLong(1), rs.getTimestamp(2),
-                    rs.getTimestamp(3), rs.getString(4),rs.getString(5));
+                    rs.getTimestamp(3), rs.getString(4), rs.getString(5));
             connection.close();
             return order;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new InvalidAttributesException("Error in find order Id" + id);
         }
     }
@@ -81,7 +81,7 @@ public class OrderRepositoryImpl implements OrderRepository{
         try {
             //Create items in the order in orders_item relation table
             Connection connection = this.dataSource.getConnection();
-            for (OrderItem oi:orderItems){
+            for (OrderItem oi : orderItems) {
                 PreparedStatement stm = connection.prepareStatement(
                         "INSERT INTO order_product_store (order_id,barcode,store_id,quantity) VALUES (?, ?, ?,?)",
                         Statement.RETURN_GENERATED_KEYS);
@@ -95,15 +95,13 @@ public class OrderRepositoryImpl implements OrderRepository{
                 if (row == 0) {
                     throw new InvalidAttributesException("Failed to add item to order = " + orderID);
                 }
-                ois.add(new OrderItem(orderID,oi.getBarcode(),oi.getStoreId(), oi.getQuantity()));
+                ois.add(new OrderItem(orderID, oi.getBarcode(), oi.getStoreId(), oi.getQuantity()));
 
             }
 
             connection.close();
             return ois;
-            }
-
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new InvalidAttributesException("Error in creating order items, wrong item information provided");
         }
     }
@@ -127,6 +125,7 @@ public class OrderRepositoryImpl implements OrderRepository{
             throw new InvalidAttributesException("Error in deleting order" + order_id);
         }
     }
+
     @Override
     public Collection<FindItemResponse> getItemsInOrder(long orderID) throws InvalidAttributesException {
         try {
@@ -134,29 +133,24 @@ public class OrderRepositoryImpl implements OrderRepository{
             //Create items in the order in orders_item relation table
             Connection connection = this.dataSource.getConnection();
             String query = "SELECT p.NAME as product_name, s.NAME as store_name, orderp.QUANTITY, sp.price " +
-                    "FROM (SELECT * FROM ORDER_PRODUCT_STORE WHERE order_id = ?) orderp " +
-                    "LEFT JOIN STORE s on orderp.STORE_ID = s.STORE_ID " +
-                    "LEFT JOIN PRODUCT p on orderp.BARCODE = p.BARCODE " +
+                    "FROM (SELECT * FROM order_product_store WHERE order_id = ?) orderp " +
+                    "LEFT JOIN store s on orderp.STORE_ID = s.STORE_ID " +
+                    "LEFT JOIN product p on orderp.BARCODE = p.BARCODE " +
                     "LEFT JOIN store_price sp on orderp.BARCODE = sp.BARCODE and orderp.STORE_ID = sp.STORE_ID;";
             PreparedStatement stm = connection.prepareStatement(query);
             stm.setLong(1, orderID);
             ResultSet rs = stm.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 FindItemResponse findItemResponse = new FindItemResponse(rs.getString(1), rs.getString(2),
                         rs.getInt(3), rs.getDouble(4));
                 orderItems.add(findItemResponse);
             }
             connection.close();
             return orderItems;
-        }
-
-        catch (SQLException e) {
-
-            throw new InvalidAttributesException("Error in find order items " + orderID);
+        } catch (SQLException e) {
+            throw new InvalidAttributesException("Error in find order items " + orderID + " : " + e.getMessage());
         }
     }
-
-
 
 
 }

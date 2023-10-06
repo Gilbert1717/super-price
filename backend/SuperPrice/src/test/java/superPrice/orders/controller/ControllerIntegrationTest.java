@@ -83,9 +83,9 @@ public class ControllerIntegrationTest {
                 .andExpect(
                         content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.order.deliveryType", is("Express")))
-                .andExpect(jsonPath("$.findItemResponse[0].product_name", is("Digital Camera")))
-                .andExpect(jsonPath("$.findItemResponse[0].storeName", is("Sports Store")))
-                .andExpect(jsonPath("$.findItemResponse[0].quantity", is(1)));
+                .andExpect(jsonPath("$.orderItems[0].product_name", is("Digital Camera")))
+                .andExpect(jsonPath("$.orderItems[0].storeName", is("Sports Store")))
+                .andExpect(jsonPath("$.orderItems[0].quantity", is(1)));
     }
 
     @Test

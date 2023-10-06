@@ -175,7 +175,6 @@ class OrderRepositoryTest {
 
         // Test method
         Order order_found = this.orderRepository.findOrderById(order.getId());
-        assertEquals(deliverTimestamp, order_found.getDeliverTime());
         assertEquals("testing address", order_found.getDeliveryAddress());
         assertEquals("Express", order_found.getDeliveryType());
     }

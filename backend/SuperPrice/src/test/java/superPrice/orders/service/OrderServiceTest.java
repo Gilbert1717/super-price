@@ -3,8 +3,6 @@ package superPrice.orders.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import superPrice.orders.model.DTO.*;
 import superPrice.orders.model.Order;
@@ -13,7 +11,6 @@ import superPrice.orders.repository.OrderRepository;
 
 import javax.naming.directory.InvalidAttributesException;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -221,7 +218,7 @@ class OrderServiceTest {
         assertEquals(deliverTimestamp, result.getOrder().getDeliverTime());
         assertEquals("Express", result.getOrder().getDeliveryType());
         assertEquals(timestampNow, result.getOrder().getCreatingTime());
-        assertEquals(expectedItemsInOrder, result.getFindItemResponse());
+        assertEquals(expectedItemsInOrder, result.getOrderItems());
         verify(orderRepository).findOrderById(orderId);
         verify(orderRepository).getItemsInOrder(orderId);
     }
