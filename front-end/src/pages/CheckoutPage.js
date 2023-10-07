@@ -25,23 +25,40 @@ function CheckoutPage(props) {
   const [errors, setErrors] = useState({});
 
   async function makeOrder() {
+
+    let noDupsList = []
+
+    console.log(cartState.items)
     const cartOrderItems = [];
     for (const item of cartState.items) {
-      // go througth cart items to find qty by summing up
-      let qty = 0;
-      for (const item2 of cartState.items) {
-        if (item2.barcode === item.barcode && item2.storeId === item.storeId) {
-          qty += 1;
+      let duplicate = false;
+      // check if already added this item to orderItems
+      for (const exisiting_item of noDupsList) {
+        if (exisiting_item.barcode === item.barcode && exisiting_item.storeId === item.storeId) {
+          duplicate = true;
         }
       }
 
-      cartOrderItems.push(
-        {
-          orderId: 1010101,        // i dont think this matters??
-          barcode: item.barcode,    // Replace with the actual barcode value
-          storeId: item.storeId,           // Replace with the actual storeId value
-          quantity: qty            // Replace with the actual quantity value
-        })
+      if (!duplicate){
+
+        let qty = 0;
+        for (const item2 of cartState.items) {
+          if (item2.barcode === item.barcode && item2.storeId === item.storeId) {
+            qty += 1;
+          }
+        }
+
+        cartOrderItems.push(
+          {
+            // orderId: 1010101,        // i dont think this matters??
+            barcode: item.barcode,    // Replace with the actual barcode value
+            storeId: item.storeId,           // Replace with the actual storeId value
+            quantity: qty            // Replace with the actual quantity value
+          })
+
+        noDupsList.push({barcode: item.barcode, storeId: item.storeId})
+        
+      } 
     }
 
     const requestBody = {
@@ -52,6 +69,7 @@ function CheckoutPage(props) {
     };
    
     try {
+      console.log(requestBody)
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/order`, requestBody);
 
       // clear cart
