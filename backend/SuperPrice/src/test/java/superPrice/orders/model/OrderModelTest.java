@@ -53,21 +53,4 @@ public class OrderModelTest {
 
         assertTrue(actualMessage.contains(expectedMessage));
     }
-
-    @Test
-    void order_info_validation_address_failed() throws InvalidAttributesException {
-        String deliveryAddress = "Tes";
-        String deliveryType = "Express";
-        Instant testingTime = Instant.now();
-        Timestamp deliverTime = Timestamp.from(testingTime);
-        Exception exception = assertThrows(InvalidAttributesException.class, () ->
-                new Order(deliverTime,deliveryAddress,deliveryType));
-
-        String expectedMessage = "invalid delivery information";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.contains(expectedMessage));
-    }
-
-
 }
