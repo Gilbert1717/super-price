@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart, CLEAR_CART } from './CartContext';
 import creditCard from "../images/CreditCard.png";
+import axios from "axios";
 
-function CheckoutPage() {
+function CheckoutPage(props) {
+  const { cartState, dispatch } = useCart();
   const navigate = useNavigate();
-  const { dispatch } = useCart();
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -23,10 +24,46 @@ function CheckoutPage() {
 
   const [errors, setErrors] = useState({});
 
-  function goToHomePage() {
-    // Clear the cart and navigate to the home page
-    dispatch({ type: CLEAR_CART });
-    navigate('/');
+  async function makeOrder() {
+    const cartOrderItems = [];
+    for (const item of cartState.items) {
+      // go througth cart items to find qty by summing up
+      let qty = 0;
+      for (const item2 of cartState.items) {
+        if (item2.barcode === item.barcode && item2.storeId === item.storeId) {
+          qty += 1;
+        }
+      }
+
+      cartOrderItems.push(
+        {
+          orderId: 1010101,        // i dont think this matters??
+          barcode: item.barcode,    // Replace with the actual barcode value
+          storeId: item.storeId,           // Replace with the actual storeId value
+          quantity: qty            // Replace with the actual quantity value
+        })
+    }
+
+    const requestBody = {
+      deliveryType: props.deliveryType,
+      orderItems: cartOrderItems,
+      deliverTime: props.deliverTime,
+      deliveryAddress: formData['address']
+    };
+   
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/order`, requestBody);
+
+      // clear cart
+      dispatch({ type: CLEAR_CART });
+
+      // navigate to order confirmation page
+      navigate(`/order-confirmation/${response.data['order']['id']}`);
+
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    }
   }
 
   const handleInputChange = (e) => {
@@ -56,10 +93,8 @@ function CheckoutPage() {
     if (Object.keys(newErrors).length === 0) {
       // Form is valid, clear the errors and proceed
       setErrors({});
-      
-      // Navigate to the home page and clear the cart
-      // This is where James' implementation of the order information and confirmation will go 
-      goToHomePage();
+
+      makeOrder();
     }
   };
 
@@ -219,6 +254,7 @@ function CheckoutPage() {
       </form>
     </div>
   );
+  
 }
 
 export default CheckoutPage;

@@ -49,7 +49,7 @@ class OrderRepositoryTest {
     void should_create_items() throws InvalidAttributesException {
         //create dummy order items for testing
         Instant testingTime = Instant.now().plus(2, ChronoUnit.DAYS);
-        Timestamp deliverTimestamp = Timestamp.from(testingTime);
+        String deliverTimestamp = Timestamp.from(testingTime).toString();
 
         // run the method
         Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "Express"));
@@ -105,7 +105,7 @@ class OrderRepositoryTest {
     void should_create_an_order() throws InvalidAttributesException, SQLException {
         // create dummy order for testing
         Instant testingTime = Instant.now().plus(2, ChronoUnit.DAYS);
-        Timestamp deliverTimestamp = Timestamp.from(testingTime);
+        String deliverTimestamp = Timestamp.from(testingTime).toString();
 
         // run the method
         Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "Express"));
@@ -123,7 +123,7 @@ class OrderRepositoryTest {
     void deleteOrderByOrderId() throws InvalidAttributesException {
         // create dummy order items for testing
         Instant testingTime = Instant.now().plus(2, ChronoUnit.DAYS);
-        Timestamp deliverTimestamp = Timestamp.from(testingTime);
+        String deliverTimestamp = Timestamp.from(testingTime).toString();
         // create order
         Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "Express"));
 
@@ -168,7 +168,7 @@ class OrderRepositoryTest {
 
         // run delete method
         Instant testingTime = Instant.now().plus(2, ChronoUnit.DAYS);
-        Timestamp deliverTimestamp = Timestamp.from(testingTime);
+        String deliverTimestamp = Timestamp.from(testingTime).toString();
 
         // Create order
         Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "Express"));
@@ -184,7 +184,7 @@ class OrderRepositoryTest {
 
         // run delete method
         Instant testingTime = Instant.now().plus(2, ChronoUnit.DAYS);
-        Timestamp deliverTimestamp = Timestamp.from(testingTime);
+        String deliverTimestamp = Timestamp.from(testingTime).toString();
 
         // Create order
         Order order = this.orderRepository.createOrder(new Order(deliverTimestamp, "testing address", "Express"));

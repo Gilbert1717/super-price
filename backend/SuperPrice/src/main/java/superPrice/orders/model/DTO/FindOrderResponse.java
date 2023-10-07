@@ -4,10 +4,10 @@ import java.sql.Timestamp;
 
 public class FindOrderResponse {
     private Timestamp creatingTime;
-    private Timestamp deliverTime;
+    private String deliverTime;
     private String deliveryType;
 
-    public FindOrderResponse(Timestamp creatingTime, Timestamp deliverTime, String deliveryType) {
+    public FindOrderResponse(Timestamp creatingTime, String deliverTime, String deliveryType) {
         this.creatingTime = creatingTime;
         this.deliverTime = deliverTime;
         this.deliveryType = deliveryType;
@@ -17,7 +17,7 @@ public class FindOrderResponse {
         return creatingTime;
     }
 
-    public Timestamp getDeliverTime() {
+    public String getDeliverTime() {
         return deliverTime;
     }
 

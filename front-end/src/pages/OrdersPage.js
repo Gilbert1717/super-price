@@ -8,9 +8,13 @@ function OrdersPage() {
     const [orderData, setOrderData] = useState(null)
     const [foundMessage, setFoundMessage] = useState("")
 
+    function isStringAnInteger(str) {
+        return /^\d+$/.test(str) && !isNaN(parseInt(str, 10));
+      }
+
     async function search(){
-        if (inputText){
-            const response = await axios.get(`http://localhost:8080/order/${inputText}`);
+        if (inputText && isStringAnInteger(inputText)){
+            const response = await axios.get(process.env.REACT_APP_API_URL + `/order/${inputText}`);
             if (!response.data) {
                 setOrderData(null);
                 setFoundMessage(`Could Not Find Order "${inputText}"` );
@@ -43,7 +47,7 @@ function OrdersPage() {
             <h3 className="box">Delivery Type: {orderData["order"]["deliveryType"]}</h3>
             <br />
             <h3 style={{ color: 'white' }}>Items Ordered:</h3>
-            {orderData["findItemResponse"] != null ? orderData["findItemResponse"].map((item, _) => (
+            {orderData["orderItems"] != null ? orderData["orderItems"].map((item, _) => (
                 <div className="box" key={uuidv4()}>{
                     <>
                     <br/>

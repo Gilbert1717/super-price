@@ -5,7 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 function Categories() {
   const navigate = useNavigate();
 
-  const categories = ["Accessories", "Appliances", "Clothing", "Electronics", "Sports"];
+  const categories = ["Accessories", "Appliances", "Clothing", "Electronics", "Sports",
+   "Dairy", "Meats", "Fish", "Fruit", "Bakery", "Vegetables"];
 
   return (
     <div className='content'>

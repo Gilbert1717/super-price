@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useCart, REMOVE_FROM_CART } from './CartContext';
-import { Link } from 'react-router-dom';
+import CheckoutPage from './CheckoutPage'; 
+
 
 function CartPage() {
     const { cartState, dispatch } = useCart();
     const [deliveryType, setDeliveryType] = useState('Regular');
-    const [userTime, setUserTime] = useState('');
-    const [userDate, setUserDate] = useState('');
-    const [isDeliveryInputValid, setIsDeliveryInputValid] = useState(false);
+    const [userTime, setUserTime] = useState("");
+    const [userDate, setUserDate] = useState("");
+    const [showPayment, setShowPayment] = useState(false);
+    const [showCart, setShowCart] = useState(true);
 
     // Function to remove an item from the cart
     function removeFromCart(productId, store) {
@@ -43,34 +45,31 @@ function CartPage() {
     // Handle the change in delivery time
     function handleUserTimeChange(event) {
         setUserTime(event.target.value);
-        validateDeliveryInputs();
     }
 
     // Handle the change in delivery date
     function handleUserDateChange(event) {
         setUserDate(event.target.value);
-        validateDeliveryInputs();
     }
 
-    // Validate delivery inputs
-    function validateDeliveryInputs() {
-        if (userTime && userDate) {
-            setIsDeliveryInputValid(true);
-        } else {
-            setIsDeliveryInputValid(false);
-        }
+    function checkOut(){
+        console.log("!!")
+        setShowPayment(true);
+        setShowCart(false);
     }
 
     // Check if the cart is empty
     const isCartEmpty = Object.keys(groupedItems).length === 0;
 
     return (
+        <>
         <div className="cartPage-container">
-            <h2 className="cartPage-Heading">Your Cart</h2>
-            {isCartEmpty ? (
+            {isCartEmpty ? ( <>
+                <h2 className="cartPage-Heading">Your Cart</h2>
                 <p className="cart-checkout-error">Your cart is empty.</p>
-            ) : (
-                <>
+            </>
+            ) : !showCart ? "" :(
+                <>  <h2 className="cartPage-Heading">Your Cart</h2>
                     <div className="cart-items">
                         {Object.values(groupedItems).map((item, index) => (
                             <div className="cart-item" key={index}>
@@ -111,6 +110,7 @@ function CartPage() {
                             className="delivery-input"
                             value={userDate}
                             onChange={handleUserDateChange}
+                            placeholder="Select a date" 
                         />
 
                         <label htmlFor="deliveryType" className="delivery-label">
@@ -131,16 +131,20 @@ function CartPage() {
                         <p className="cart-total-price">Shipping: ${shippingCost.toFixed(2)}</p>
                         <p className="cart-total-price">Total: ${total.toFixed(2)}</p>
                     </div>
-                    {isDeliveryInputValid ? (
-                        <Link to="/checkout">
-                            <button className="cart-checkout-button">Checkout</button>
-                        </Link>
+                    {userTime && userDate ? (
+                        <button className="cart-checkout-button" onClick={checkOut}>Checkout</button>
                     ) : (
                         <p className="cart-checkout-error">Please enter delivery details.</p>
                     )}
+                
                 </>
             )}
+        {showPayment ? <CheckoutPage 
+                            deliveryType={deliveryType} 
+                            deliverTime={userDate + " " + userTime}
+                        /> : ""}
         </div>
+        </>
     );
 }
 

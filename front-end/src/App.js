@@ -13,6 +13,7 @@ import ComparePrices from './pages/compare_prices';
 import OrdersPage from './pages/OrdersPage';
 
 import CartPage from './pages/CartPage'; // Import the CartPage component
+import OrderConfirmation from './pages/OrderConfirmation';
 import { CartProvider } from './pages/CartContext'; // Import the CartProvider
 import CheckoutPage from './pages/CheckoutPage'; // Import the CheckoutPage component
 
@@ -37,6 +38,7 @@ function App() {
                   <Route path="/compare-prices/:query" element={<ComparePrices />} />
 
                   <Route path="/orders" element={<OrdersPage />} />
+                  <Route path="/order-confirmation/:query" element={<OrderConfirmation />} />
 
                   <Route path="/cart" element={<CartPage />} /> {/* Add the route for the cart page */}
                   <Route path="/checkout" element={<CheckoutPage />} /> {/* Add the route for the checkout page */}
