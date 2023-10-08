@@ -7,6 +7,8 @@ import axios from "axios";
 function CheckoutPage(props) {
   const { cartState, dispatch } = useCart();
   const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState(null);
+
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -26,9 +28,8 @@ function CheckoutPage(props) {
 
   async function makeOrder() {
 
-    let noDupsList = []
+    let noDupsList = [] // tracks duplicates
 
-    console.log(cartState.items)
     const cartOrderItems = [];
     for (const item of cartState.items) {
       let duplicate = false;
@@ -40,7 +41,7 @@ function CheckoutPage(props) {
       }
 
       if (!duplicate){
-
+        // find quantity
         let qty = 0;
         for (const item2 of cartState.items) {
           if (item2.barcode === item.barcode && item2.storeId === item.storeId) {
@@ -50,10 +51,9 @@ function CheckoutPage(props) {
 
         cartOrderItems.push(
           {
-            // orderId: 1010101,        // i dont think this matters??
-            barcode: item.barcode,    // Replace with the actual barcode value
-            storeId: item.storeId,           // Replace with the actual storeId value
-            quantity: qty            // Replace with the actual quantity value
+            barcode: item.barcode,    
+            storeId: item.storeId,        
+            quantity: qty          
           })
 
         noDupsList.push({barcode: item.barcode, storeId: item.storeId})
@@ -69,18 +69,17 @@ function CheckoutPage(props) {
     };
    
     try {
-      console.log(requestBody)
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/order`, requestBody);
 
       // clear cart
       dispatch({ type: CLEAR_CART });
 
-      // navigate to order confirmation page
+      // navigate to order confirmation page, giving order id
       navigate(`/order-confirmation/${response.data['order']['id']}`);
 
     } catch (error) {
-      // Handle errors
-      console.error(error);
+      // set error message
+      setErrorMsg(error);
     }
   }
 
@@ -270,6 +269,7 @@ function CheckoutPage(props) {
 
         <input type="submit" value="Place Order" className="submit-btn" />
       </form>
+      {errorMsg != null ? errorMsg : ""}
     </div>
   );
   
