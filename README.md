@@ -13,7 +13,7 @@
 * Raphael Bullen (s3897844)
 
 ## Links to videos 
-Links to individual videos found in docs/Milestone2/SRS_Group_06_Milestone2.docx
+Links to individual videos found in docs/Milestone3/SRS_Group_06_Milestone3.docx in the Appendix: Milestone 3 section
 
 ## Records
 
@@ -21,16 +21,18 @@ Links to individual videos found in docs/Milestone2/SRS_Group_06_Milestone2.docx
 * Github Project Board : https://github.com/orgs/cosc2299-sept-2023/projects/62/views/1
 
 	
-## Milestone 2 Features - 17 September 2023
-* Search products
-* Browse products by category
-* Compare prices for product
+## Milestone 3 Features - 17 September 2023
+* Added shopping cart 
+* Added more items (specifically groceries) to database 
+* Popup notification for special offers 
+* Added payment checkout (Custom Feature) 
+* Can view orders (Custom Feature) 
   
 
 # Run Instructions
 How to run our project.
 
-## Setup your environment 
+### Setup your environment 
 You will need to have in your system
 
 - Java 17.0 or higher
@@ -38,10 +40,11 @@ You will need to have in your system
 - Apache Maven
 - IDE or Editor
 
-## Backend
-- run SuperPriceApplication.java (found in: /backend/SuperPrice/src/main/java/superPrice/)
+### How to run:
+#### With h2 database:
+In root of project, run:
+`docker-compose up`
 
-## Frontend
-- cd into front-end/
-- Install dependencies "npm install"
-- Run the app with "npm start"
+#### With MySQL database:
+In root of project, run:
+`docker-compose -f docker-compose-mysql.yml --env-file compose-vars.env up`
