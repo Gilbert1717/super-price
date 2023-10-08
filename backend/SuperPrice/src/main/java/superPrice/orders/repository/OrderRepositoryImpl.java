@@ -34,7 +34,7 @@ public class OrderRepositoryImpl implements OrderRepository {
             Timestamp timestamp = Timestamp.from(utcNow);
 
             stm.setTimestamp(1, timestamp);
-            stm.setString(2, order.getDeliverTime());
+            stm.setTimestamp(2, order.getDeliverTime());
             stm.setString(3, order.getDeliveryAddress());
             stm.setString(4, order.getDeliveryType());
             int row = stm.executeUpdate();
@@ -67,7 +67,7 @@ public class OrderRepositoryImpl implements OrderRepository {
             ResultSet rs = stm.executeQuery();
             rs.next();
             Order order = new Order(rs.getLong(1), rs.getTimestamp(2),
-                    rs.getString(3), rs.getString(4), rs.getString(5));
+                    rs.getTimestamp(3), rs.getString(4), rs.getString(5));
             connection.close();
             return order;
         } catch (Exception e) {
@@ -96,6 +96,7 @@ public class OrderRepositoryImpl implements OrderRepository {
                     throw new InvalidAttributesException("Failed to add item to order = " + orderID);
                 }
                 ois.add(new OrderItem(orderID, oi.getBarcode(), oi.getStoreId(), oi.getQuantity()));
+
             }
 
             connection.close();

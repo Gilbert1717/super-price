@@ -27,10 +27,8 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public Order creatingOrder(NewOrderRequest order) throws InvalidAttributesException {
-        // Timestamp deliveryTime = converterOrderDeliveryTime(order.getDeliverTime());
-        Order newOrder = new Order(order.getDeliverTime(),order.getDeliveryAddress(), order.getDeliveryType());
-        Order order_with_id = orderRepository.createOrder(newOrder);
-        return order_with_id;
+        Timestamp deliveryTime = converterOrderDeliveryTime(order.getDeliverTime());
+        return orderRepository.createOrder(new Order(deliveryTime,order.getDeliveryAddress(), order.getDeliveryType()));
     }
 
     @Override

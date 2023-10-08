@@ -10,12 +10,12 @@ public class Order {
 
     private long id;
     private Timestamp creatingTime;
-    private String deliverTime;
+    private Timestamp deliverTime;
     private String deliveryAddress;
     private String deliveryType;
 
 
-    public Order(long id, Timestamp creatingTime, String deliverTime, String deliveryAddress, String deliveryType) {
+    public Order(long id, Timestamp creatingTime, Timestamp deliverTime, String deliveryAddress, String deliveryType) {
         this.id = id;
         this.creatingTime = creatingTime;
         this.deliverTime = deliverTime;
@@ -23,17 +23,18 @@ public class Order {
         this.deliveryType = deliveryType;
     }
 
-    public Order(String deliverTime, String deliveryAddress,String deliveryType) throws InvalidAttributesException {
+    public Order(Timestamp deliverTime, String deliveryAddress,String deliveryType) throws InvalidAttributesException {
         try {
-            // orderInfoValidation(deliveryAddress, deliveryType);
-            // deliveryTimeValidation(deliverTime.toInstant());
+            orderInfoValidation(deliveryAddress, deliveryType);
+            deliveryTimeValidation(deliverTime.toInstant());
             this.deliverTime = deliverTime;
             this.deliveryAddress = deliveryAddress;
             this.deliveryType = deliveryType;
-        }
-         catch (Exception e) {
+        } catch (InvalidAttributesException e) {
             throw e;
         }
+
+
     }
     private void orderInfoValidation(String deliveryAddress,String deliveryType) throws InvalidAttributesException {
         if (deliveryType.toLowerCase().equals("express") || deliveryType.toLowerCase() .equals("regular")){}
@@ -58,7 +59,7 @@ public class Order {
         return creatingTime;
     }
 
-    public String getDeliverTime() {
+    public Timestamp getDeliverTime() {
         return deliverTime;
     }
 
