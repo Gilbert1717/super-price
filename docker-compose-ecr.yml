@@ -1,0 +1,47 @@
+version: '3.4'
+services:
+  api:
+    platform: "linux/amd64"
+    image: 568302134482.dkr.ecr.us-east-1.amazonaws.com/superprice-backend
+    ports:
+      - "8080:8080"
+    environment:
+      spring.datasource.url: jdbc:mysql://database:3306/priceDB?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+      spring.datasource.driverClassName: com.mysql.cj.jdbc.Driver
+      spring.datasource.username: root
+      spring.datasource.password: sept23s2
+    depends_on:
+      - database
+
+  web:
+    platform: "linux/amd64"
+    image: 568302134482.dkr.ecr.us-east-1.amazonaws.com/superprice-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_URL: "http://localhost:8080"
+    depends_on:
+      - api
+
+
+  database:
+    platform: "linux/amd64"
+    image: 568302134482.dkr.ecr.us-east-1.amazonaws.com/superprice-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: priceDB
+      MYSQL_ROOT_PASSWORD: sept23s2
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+:
+  adminer:
+    platform: "linux/amd64"
+    image: 568302134482.dkr.ecr.us-east-1.amazonaws.com/superprice-adminer
+    restart: always
+    ports:
+      - "9000:8080"
+
+volumes:
+  db:
