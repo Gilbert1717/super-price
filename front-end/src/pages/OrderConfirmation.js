@@ -1,5 +1,4 @@
-import { naviagte, useNavigate, useParams } from 'react-router-dom';
-
+import { useNavigate, useParams } from 'react-router-dom';
 
 function OrderConfirmation() {
   const { query } = useParams();
