@@ -64,7 +64,7 @@ function CheckoutPage(props) {
     const requestBody = {
       deliveryType: props.deliveryType,
       orderItems: cartOrderItems,
-      deliverTime: props.deliverTime,
+      deliverTime: props.deliverTime + ":00", // need ...:00 for formatting... "yyyy-MM-dd HH:mm:ss"
       deliveryAddress: formData['address']
     };
    
@@ -79,7 +79,7 @@ function CheckoutPage(props) {
 
     } catch (error) {
       // set error message
-      setErrorMsg(error);
+      setErrorMsg(error.response.data["message"]);
     }
   }
 
@@ -115,7 +115,7 @@ function CheckoutPage(props) {
     }
   };
 
-  return (
+  return ( <>
     <div className="CheckOutContainer">
       <form onSubmit={handleSubmit}>
         <div className="row">
@@ -265,12 +265,13 @@ function CheckoutPage(props) {
               </div>
             </div>
           </div>
+          {/* errors for formatting for api post */}
+          {errorMsg != null ?  <p className="error red-text"> {errorMsg}</p> : "" }
         </div>
-
         <input type="submit" value="Place Order" className="submit-btn" />
       </form>
-      {errorMsg != null ? errorMsg : ""}
     </div>
+    </>
   );
   
 }

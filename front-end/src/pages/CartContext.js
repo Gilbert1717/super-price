@@ -23,7 +23,6 @@ function cartReducer(state, action) {
                 items: [...state.items, action.payload],
             };
         case REMOVE_FROM_CART:
-            console.log(action.payload)
             return {
                 ...state,
                 items: state.items.filter((item) => (item.store !== action.payload["store"]) || (item.barcode !== action.payload["barcode"])),

@@ -53,7 +53,6 @@ function CartPage() {
     }
 
     function checkOut(){
-        console.log("!!")
         setShowPayment(true);
         setShowCart(false);
     }
