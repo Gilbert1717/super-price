@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart, CLEAR_CART } from './CartContext';
 import creditCard from "../images/CreditCard.png";
+import axios from "axios";
 
-function CheckoutPage() {
+function CheckoutPage(props) {
+  const { cartState, dispatch } = useCart();
   const navigate = useNavigate();
-  const { dispatch } = useCart();
+  const [errorMsg, setErrorMsg] = useState(null);
+
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -23,10 +26,61 @@ function CheckoutPage() {
 
   const [errors, setErrors] = useState({});
 
-  function goToHomePage() {
-    // Clear the cart and navigate to the home page
-    dispatch({ type: CLEAR_CART });
-    navigate('/');
+  async function makeOrder() {
+
+    let noDupsList = [] // tracks duplicates
+
+    const cartOrderItems = [];
+    for (const item of cartState.items) {
+      let duplicate = false;
+      // check if already added this item to orderItems
+      for (const exisiting_item of noDupsList) {
+        if (exisiting_item.barcode === item.barcode && exisiting_item.storeId === item.storeId) {
+          duplicate = true;
+        }
+      }
+
+      if (!duplicate){
+        // find quantity
+        let qty = 0;
+        for (const item2 of cartState.items) {
+          if (item2.barcode === item.barcode && item2.storeId === item.storeId) {
+            qty += 1;
+          }
+        }
+
+        cartOrderItems.push(
+          {
+            barcode: item.barcode,    
+            storeId: item.storeId,        
+            quantity: qty          
+          })
+
+        noDupsList.push({barcode: item.barcode, storeId: item.storeId})
+        
+      } 
+    }
+
+    const requestBody = {
+      deliveryType: props.deliveryType,
+      orderItems: cartOrderItems,
+      deliverTime: props.deliverTime,
+      deliveryAddress: formData['address']
+    };
+   
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/order`, requestBody);
+
+      // clear cart
+      dispatch({ type: CLEAR_CART });
+
+      // navigate to order confirmation page, giving order id
+      navigate(`/order-confirmation/${response.data['order']['id']}`);
+
+    } catch (error) {
+      // set error message
+      setErrorMsg(error);
+    }
   }
 
   const handleInputChange = (e) => {
@@ -56,10 +110,8 @@ function CheckoutPage() {
     if (Object.keys(newErrors).length === 0) {
       // Form is valid, clear the errors and proceed
       setErrors({});
-      
-      // Navigate to the home page and clear the cart
-      // This is where James' implementation of the order information and confirmation will go 
-      goToHomePage();
+
+      makeOrder();
     }
   };
 
@@ -217,8 +269,10 @@ function CheckoutPage() {
 
         <input type="submit" value="Place Order" className="submit-btn" />
       </form>
+      {errorMsg != null ? errorMsg : ""}
     </div>
   );
+  
 }
 
 export default CheckoutPage;

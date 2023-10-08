@@ -71,6 +71,7 @@ function ComparePrices() {
                     barcode: price_product_store["product"]["barcode"],
                     name: price_product_store["product"]["name"],
                     store: price_product_store["store"]["name"],
+                    storeId: price_product_store["store"]["storeId"],
                     address: price_product_store["store"]["address"],
                     price: price_product_store["price"]["price"],
                   })}>

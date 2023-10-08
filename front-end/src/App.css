@@ -242,7 +242,7 @@
 .CheckOutContainer{
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(rgba(25, 25, 25, 0.75), rgba(25, 25, 25, 0.75)), url(./images/backgroud.jpg);
+  /* background-image: linear-gradient(rgba(25, 25, 25, 0.75), rgba(25, 25, 25, 0.75)), url(./images/backgroud.jpg); */
   background-size: cover;
   background-position: center;
   background-attachment: scroll;
@@ -407,6 +407,8 @@
   cursor: pointer;
   justify-content: right;
   float: right;
+  width: 30%;
+  margin: auto;
 }
 
 /* Hover effect for the Checkout button */
@@ -439,7 +441,7 @@
   background-color: #d11a2a;
 }
 
-.ViewCart, .Profile {
+.ViewCart, .Profile, .return-home {
   background-color: #999999;
   color: #fff;
   border: 2px solid #ffffff;
@@ -552,7 +554,7 @@
   margin: auto;
 }
 
-.order-result{
+.order-result, .order-confirmation{
   background-color: rgb(40, 216, 27, 0.3);
   border-radius: 25px;
   border: 2px solid white;
@@ -561,6 +563,16 @@
   margin-top: 20px;
   padding: 10px;
   justify-content: center;
+}
+
+.order-confirmation{
+  padding: 2%;
+  width: 60%;
+}
+
+.order-confirmation h1, .order-confirmation h2, .order-confirmation h3,  .order-confirmation p,  .order-confirmation button{
+  padding: 1%;
+  margin-top: 10px;
 }
 
 .OrdersBtn {

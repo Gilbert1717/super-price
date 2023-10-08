@@ -3,7 +3,7 @@ CREATE TABLE orders
 (
     id BIGINT AUTO_INCREMENT,
     creating_time TIMESTAMP NOT NULL,
-    delivery_time TIMESTAMP NOT NULL,
+    delivery_time VARCHAR(150) NOT NULL,
     delivery_address VARCHAR(150) NOT NULL,
     delivery_type VARCHAR(30) NOT NULL,
     PRIMARY KEY (id)
