@@ -51,23 +51,8 @@
 //         String expectedMessage = "invalid delivery information";
 //         String actualMessage = exception.getMessage();
 
-//         assertTrue(actualMessage.contains(expectedMessage));
-//     }
 
-//     @Test
-//     void order_info_validation_address_failed() throws InvalidAttributesException {
-//         String deliveryAddress = "Tes";
-//         String deliveryType = "Express";
-//         Instant testingTime = Instant.now();
-//         String deliverTime = Timestamp.from(testingTime).toString();
-//         Exception exception = assertThrows(InvalidAttributesException.class, () ->
-//                 new Order(deliverTime,deliveryAddress,deliveryType));
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+}
 
-//         String expectedMessage = "invalid delivery information";
-//         String actualMessage = exception.getMessage();
-
-//         assertTrue(actualMessage.contains(expectedMessage));
-//     }
-
-
-// }

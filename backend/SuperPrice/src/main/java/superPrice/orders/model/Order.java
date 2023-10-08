@@ -36,8 +36,7 @@ public class Order {
         }
     }
     private void orderInfoValidation(String deliveryAddress,String deliveryType) throws InvalidAttributesException {
-        if (deliveryAddress.length() > 4 &&
-                (deliveryType.toLowerCase().equals("express") || deliveryType.toLowerCase() .equals("regular"))){}
+        if (deliveryType.toLowerCase().equals("express") || deliveryType.toLowerCase() .equals("regular")){}
         else {
             throw new InvalidAttributesException("invalid delivery information");
         }
@@ -46,7 +45,7 @@ public class Order {
         Instant utcNow = Instant.now();
         long diff = utcNow.until(t1, ChronoUnit.DAYS);
         if (diff < 1) {
-            throw new InvalidAttributesException("invalid delivery date");
+            throw new InvalidAttributesException("invalid delivery date, time frame is not enough for delivering");
         }
     }
 
